@@ -47,7 +47,7 @@ body {
 
 .container {
 	width: $main-container-width;
-	margin: 15em auto;
+	margin: 13em auto;
 	overflow: hidden;
 }
 
@@ -72,8 +72,12 @@ p {
 }
 
 .info {
-	@include column(8);
+	@include column(7);
 }
 .preview {
-	@include column(4);
+	@include column(5);
+}
+.sign-up {
+	width: 100%;
+	max-width: 350px;
 }
