@@ -1,0 +1,33 @@
+$main-container-width: 1024px;
+
+
+//COLORS
+$white: #fff;
+$base-color: $white;
+$accent: #2e88bf;
+
+
+//TYPOGRAPHY
+$main-family: 'aktiv-grotesk-std', 'Source Sans Pro', Helvetica, Arial, sans-serif;
+
+$main-weight: 300;
+$bold-weight: 500;
+
+$line-height: 1.5em;
+$heading-line-height: 1.3em;
+
+
+//SPACING
+$margin-m: 20px;
+
+$padding-m: $margin-s $margin-s+5;
+
+
+//BORDERS
+$border-style: solid;
+$border-width: 2px;
+
+
+//ANIMATIONS
+$transition-duration: .3s;
+$transition-timing: ease;
