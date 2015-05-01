@@ -87,6 +87,15 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
         return document.getElementById(id);
     };
 
+    //random bg image
+    (function(){
+        var options = ['skater.jpg', 'runner-clouds.jpeg', 'nomad.jpg'],
+            pickedImgUrl = options[Math.floor((Math.random()*(options.length))+0)],
+            el = document.getElementsByClassName('bg')[0];
+
+        el.setAttribute('style', 'background-image: url(/img/'+pickedImgUrl+');');
+    }());
+
     //email
     (function(){
 
@@ -142,18 +151,13 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                     }
                 };
 
-                setTimeout(function(){
-                    onRes({
-                        success: true
-                    });
-                }, 3000);
-                // B.ajax({
-                //     url: '../php/form.php',
-                //     type: 'post',
-                //     data: 'email='+val,
-                //     dataType: 'json',
-                //     success: onRes
-                // });
+                B.ajax({
+                    url: '../php/form.php',
+                    type: 'post',
+                    data: 'email='+val,
+                    dataType: 'json',
+                    success: onRes
+                });
             };
 
         B(emailForm).on('submit', sendMail);

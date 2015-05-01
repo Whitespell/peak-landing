@@ -6,6 +6,15 @@
         return document.getElementById(id);
     };
 
+    //random bg image
+    (function(){
+        var options = ['skater.jpg', 'runner-clouds.jpeg', 'nomad.jpg'],
+            pickedImgUrl = options[Math.floor((Math.random()*(options.length))+0)],
+            el = document.getElementsByClassName('bg')[0];
+
+        el.setAttribute('style', 'background-image: url(/img/'+pickedImgUrl+');');
+    }());
+
     //email
     (function(){
 
@@ -61,18 +70,13 @@
                     }
                 };
 
-                setTimeout(function(){
-                    onRes({
-                        success: true
-                    });
-                }, 3000);
-                // B.ajax({
-                //     url: '../php/form.php',
-                //     type: 'post',
-                //     data: 'email='+val,
-                //     dataType: 'json',
-                //     success: onRes
-                // });
+                B.ajax({
+                    url: '../php/form.php',
+                    type: 'post',
+                    data: 'email='+val,
+                    dataType: 'json',
+                    success: onRes
+                });
             };
 
         B(emailForm).on('submit', sendMail);
