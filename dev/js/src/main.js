@@ -51,21 +51,28 @@
                 //send email
                 BsendBtn.addClass('is-mailing');
 
-                B.ajax({
-                    url: '../php/form.php',
-                    type: 'post',
-                    data: 'email='+val,
-                    dataType: 'json',
-                    success: function(res){
-                        BsendBtn.removeClass('is-mailing');
-                        if(res.success) {
-                            showState('success', true);
-                            document.activeElement.blur();
-                        } else {
-                            showState('error');
-                        }
+                var onRes = function(res){
+                    BsendBtn.removeClass('is-mailing');
+                    if(res.success) {
+                        showState('success', true);
+                        document.activeElement.blur();
+                    } else {
+                        showState('error');
                     }
-                });
+                };
+
+                setTimeout(function(){
+                    onRes({
+                        success: true
+                    });
+                }, 3000);
+                // B.ajax({
+                //     url: '../php/form.php',
+                //     type: 'post',
+                //     data: 'email='+val,
+                //     dataType: 'json',
+                //     success: onRes
+                // });
             };
 
         B(emailForm).on('submit', sendMail);

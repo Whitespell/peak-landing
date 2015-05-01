@@ -1,0 +1,71 @@
+//tablet
+@include media($md-container-width, $main-container-width){
+
+    .container {
+        width: $md-container-width;
+        margin-top: 6em;
+    }
+
+    #logo {
+        max-width: 220px;
+    }
+
+}
+
+//fatablet
+@include media($sm-container-width, $md-container-width){
+
+    .container {
+        width: $sm-container-width;
+        margin-top: 5em;
+    }
+
+    #logo {
+        max-width: 220px;
+    }
+
+    .input-wrapper {
+        min-width: 250px;
+        &__input {
+            max-width: 200px;
+        }
+    }
+
+}
+
+//mobile
+@include media($max-width: $sm-container-width){
+
+    body {
+        font-size: $xs-size-m;
+    }
+
+    .container {
+        width: $xs-container-width;
+        margin-top: 4em;
+    }
+
+    .column {
+        &.one-third,
+        &.two-third {
+            @include column(12);
+        }
+    }
+
+    #logo {
+        max-width: 200px;
+    }
+
+    .preview-wrapper {
+        max-width: 300px;
+        margin: $margin-l auto 0 auto;
+    }
+
+    .input-wrapper {
+        min-width: 250px;
+        &__input {
+            max-width: 200px;
+        }
+    }
+
+}

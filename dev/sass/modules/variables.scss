@@ -1,4 +1,7 @@
-$main-container-width: 1024px;
+$main-container-width: 960px;
+$md-container-width: 738px;
+$sm-container-width: 550px;
+$xs-container-width: 90%;
 
 
 //COLORS
@@ -18,11 +21,12 @@ $heading-line-height: 1.5em;
 
 $size-s: .85em;
 $size-m: 18px;
+$xs-size-m: 16px;
 
 //SPACING
-$margin-s: 10px;
-$margin-m: 20px;
-$margin-l: 40px;
+$margin-s: .5em;
+$margin-m: 1em;
+$margin-l: 2em;
 
 $padding-m: $margin-s $margin-s+5;
 

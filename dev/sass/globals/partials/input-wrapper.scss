@@ -35,15 +35,19 @@
 
         &::-webkit-input-placeholder {
            color: $white;
+           opacity: .8;
         }
         &:-moz-placeholder { /* Firefox 18- */
            color: $white;
+           opacity: .8;
         }
         &::-moz-placeholder {  /* Firefox 19+ */
            color: $white;
+           opacity: .8;
         }
         &:-ms-input-placeholder {
            color: $white;
+           opacity: .8;
         }
     }
 
@@ -59,8 +63,8 @@
         @include border($color: $white);
         @include transition(all);
 
-        color: $accent;
-        background-color: $white;
+        color: $white;
+        background-color: transparent;
 
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -89,9 +93,8 @@
         }
 
         &:hover {
-            background-color: $accent;
-            border-color: $accent;
-            color: $white;
+            color: $accent;
+            background-color: $white;
         }
     }
 }

@@ -11,6 +11,7 @@ body {
 	font: $main-weight $size-m $main-family;
 	color: $base-color;
 	line-height: $line-height;
+	overflow: hidden;
 }
 
 .bg {
@@ -47,7 +48,7 @@ body {
 
 .container {
 	width: $main-container-width;
-	margin: 13em auto;
+	margin: 10em auto;
 	overflow: hidden;
 }
 
@@ -56,7 +57,7 @@ img {
 }
 
 #logo {
-	max-width: 270px;
+	max-width: 250px;
 	margin-bottom: $margin-m;
 }
 
@@ -71,12 +72,14 @@ p {
 	margin-bottom: $margin-m;
 }
 
-.info {
+.column.two-third {
 	@include column(7);
 }
-.preview {
+
+.column.one-third {
 	@include column(5);
 }
+
 .sign-up {
 	width: 100%;
 	max-width: 350px;
