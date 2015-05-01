@@ -14,11 +14,15 @@ $main-weight: 300;
 $bold-weight: 500;
 
 $line-height: 1.5em;
-$heading-line-height: 1.3em;
+$heading-line-height: 1.5em;
 
+$size-s: .85em;
+$size-m: 18px;
 
 //SPACING
+$margin-s: 10px;
 $margin-m: 20px;
+$margin-l: 40px;
 
 $padding-m: $margin-s $margin-s+5;
 
@@ -26,6 +30,7 @@ $padding-m: $margin-s $margin-s+5;
 //BORDERS
 $border-style: solid;
 $border-width: 2px;
+$border-radius: 5px;
 
 
 //ANIMATIONS

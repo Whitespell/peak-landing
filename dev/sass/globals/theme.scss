@@ -13,8 +13,67 @@ body {
 	line-height: $line-height;
 }
 
+.bg {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: -1;
+
+	background-image: url(/img/skater.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+	&:after {
+		content: '';
+
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		background-color: $accent;
+		opacity: .8;
+
+		z-index: 1;
+	}
+}
+
 .container {
 	width: $main-container-width;
-	margin: 0 auto;
+	margin: 15em auto;
 	overflow: hidden;
+}
+
+img {
+	width: 100%;
+}
+
+#logo {
+	max-width: 270px;
+	margin-bottom: $margin-m;
+}
+
+h5 {
+	font-size: 1.3em;
+	font-weight: $main-weight;
+	line-height: $heading-line-height;
+	margin-bottom: $margin-l;
+}
+
+p {
+	margin-bottom: $margin-m;
+}
+
+.info {
+	@include column(8);
+}
+.preview {
+	@include column(4);
 }

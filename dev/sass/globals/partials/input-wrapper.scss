@@ -1,5 +1,5 @@
 .input-wrapper {
-    min-width: 250px;
+    min-width: 300px;
     display: inline-block;
 
     &__input, &__icon-wrapper {
@@ -18,33 +18,49 @@
     }
 
     &__input {
-        font: $body-weight $size-s $body-family;
+        font: $main-weight $size-s $main-family;
         width: 100%;
-        max-width: 200px;
+        max-width: 250px;
         height: 45px;
 
-        @include border($color: $brand-blue);
+        @include border($color: $white);
+        background-color: rgba($accent, .2);
+        color: $white;
         border-right: none;
 
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
 
         -webkit-appearance: none;
+
+        &::-webkit-input-placeholder {
+           color: $white;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+           color: $white;
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: $white;
+        }
+        &:-ms-input-placeholder {
+           color: $white;
+        }
     }
 
     &__icon-wrapper {
         width: 50px;
+        text-align: center;
 
         height: 45px;
         line-height: 45px;
 
         padding: 0;
 
-        @include border($color: $brand-blue-dark);
+        @include border($color: $white);
         @include transition(all);
 
-        color: $white;
-        background-color: $brand-blue-dark;
+        color: $accent;
+        background-color: $white;
 
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -55,7 +71,7 @@
         &__icon:before {
             position: relative;
             content: 'send';
-            @include transition(opacity, $duration: $transition-duration-alt);
+            @include transition(opacity, $duration: $transition-duration);
         }
 
         &.is-hidden &__icon:before {
@@ -73,8 +89,9 @@
         }
 
         &:hover {
-            background-color: $brand-deep-blue;
-            border-color: $brand-deep-blue;
+            background-color: $accent;
+            border-color: $accent;
+            color: $white;
         }
     }
 }

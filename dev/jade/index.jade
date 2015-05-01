@@ -5,6 +5,7 @@ block pageVars
   - var pageDescription = "Track your sports life"
 
 block pageContent
+  .bg
   .container
 
     section.info
@@ -12,11 +13,12 @@ block pageContent
         img(src="/img/peak-logo.svg" alt="Peak Logo")
       h5
         b Track your sports life,
-        | compare yourself with your favorite athletes and much more that doesnt fit in here
+        |  compare yourself with your favorite athletes and much more that doesnt fit in here
 
       section.sign-up
-        b Sign up now
-        | and make sure you won't miss out when we release
+        p
+          b Sign up now
+          |  and make sure you won't miss out when we release
         form(action="#" method="post")#email-form
             .input-wrapper
                 input#email-input(name="email" type="email" placeholder="dannycrane@gmail.com" required).input-wrapper__input
@@ -24,5 +26,5 @@ block pageContent
                     span.input-wrapper__icon-wrapper__icon
 
     section.preview
-      img(src="/img/peak-iphone-preview.png" alt="Peak Preview")
+      img(src="/img/peak-iphone-preview.jpg" alt="Peak Preview")
 
