@@ -1,7 +1,6 @@
 <?php
 
-$data = $_POST;
-
+$data = $_GET;
 
 if (isset($data['email']) && $data['email'] != '' && strtoupper($_SERVER['REQUEST_METHOD']) === 'POST'):
 	include('assets/settings.php');
