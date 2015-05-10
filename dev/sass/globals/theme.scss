@@ -88,9 +88,13 @@ p {
 	margin-bottom: $margin-m;
 }
 
+a {
+	color: $white;
+	text-decoration: none;
+}
+
 a.btn {
 	font: $main-weight $size-s $main-family;
-	text-decoration: none;
 
 	@include border($color: $accent);
 	background-color: $accent;
@@ -122,6 +126,17 @@ a.btn {
 	nav {
 		float: right;
 	}
+}
+
+.mastfoot {
+	position: fixed;
+	bottom: $margin-m;
+	left: 0;
+	right: 0;
+	text-align: center;
+
+	font-size: $size-s;
+	color: $white;
 }
 
 .column.two-third {
