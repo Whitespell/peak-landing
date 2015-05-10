@@ -35,30 +35,13 @@ module.exports = function (grunt){
         }
     },
 
-    jade: {
-      options: {
-        data: {
-          debug: false
+    ejs: {
+        all: {
+            src: ['<%= devRoot %>/ejs/*.ejs'],
+            dest: '<%= webRoot %>/',
+            expand: false,
+            ext: '.html'
         }
-      },
-      root: {
-        files: [{
-          cwd: '<%= devRoot %>/jade',
-          src: '*.jade',
-          dest: '<%= webRoot %>',
-          ext: '.html',
-          expand: true
-        }]
-      },
-      docs: {
-        files: [{
-          cwd: '<%= devRoot %>/jade/docs',
-          src: '*.jade',
-          dest: '<%= webRoot %>/docs',
-          ext: '.html',
-          expand: true
-        }]
-      }
     },
 
     sass: {
@@ -131,6 +114,6 @@ module.exports = function (grunt){
  grunt.registerTask('css', ['sass', 'autoprefixer']);
 
  grunt.registerTask('default', ['connect', 'watch']);
- grunt.registerTask('build', ['jade', 'css', 'jshint', 'uglify']);
+ grunt.registerTask('build', ['ejs', 'css', 'jshint', 'uglify']);
 
 }
