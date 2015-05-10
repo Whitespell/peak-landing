@@ -37,8 +37,8 @@ module.exports = function (grunt){
 
     ejs: {
       all: {
-        src: ['<%= devRoot %>/ejs/*.ejs'],
-        cwd: '',
+        src: ['*.ejs'],
+        cwd: '<%= devRoot %>/ejs/',
         dest: '<%= webRoot %>/',
         expand: true,
         ext: '.html',
