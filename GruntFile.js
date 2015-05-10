@@ -3,7 +3,7 @@ module.exports = function (grunt){
  grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    webRoot: 'www',
+    webRoot: 'www/peak',
     devRoot: 'dev',
 
     connect: {
