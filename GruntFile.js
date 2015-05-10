@@ -3,7 +3,7 @@ module.exports = function (grunt){
  grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    webRoot: 'www/peak',
+    webRoot: 'www',
     devRoot: 'dev',
 
     connect: {
@@ -21,13 +21,13 @@ module.exports = function (grunt){
         options: {
             livereload: true,
         },
-        jade: {
-            files: ['<%= devRoot %>/jade/**/*.jade'],
-            tasks: ['jade']
+        html: {
+            files: ['<%= devRoot %>/ejs/**/*.ejs'],
+            tasks: ['ejs']
         },
         js: {
             files: ['<%= devRoot %>/js/**/*.js'],
-            tasks: ['jshint', 'concat']
+            tasks: ['concat']
         },
         sass: {
             files: ['<%= devRoot %>/sass/**/*.scss'],
@@ -36,12 +36,14 @@ module.exports = function (grunt){
     },
 
     ejs: {
-        all: {
-            src: ['<%= devRoot %>/ejs/*.ejs'],
-            dest: '<%= webRoot %>/',
-            expand: false,
-            ext: '.html'
-        }
+      all: {
+        src: ['<%= devRoot %>/ejs/*.ejs'],
+        cwd: '',
+        dest: '<%= webRoot %>/',
+        expand: true,
+        ext: '.html',
+        options: {}
+      }
     },
 
     sass: {
@@ -114,6 +116,6 @@ module.exports = function (grunt){
  grunt.registerTask('css', ['sass', 'autoprefixer']);
 
  grunt.registerTask('default', ['connect', 'watch']);
- grunt.registerTask('build', ['ejs', 'css', 'jshint', 'uglify']);
+ grunt.registerTask('build', ['ejs', 'css', 'uglify']);
 
 }

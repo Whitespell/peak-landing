@@ -23,7 +23,7 @@ body {
 	z-index: -1;
 
 	//background-image: url(/img/skater.jpg);
-	background-color: $accent;
+	background-color: $dark;
 	background-repeat: no-repeat;
 	background-position: center center;
 	-webkit-background-size: cover;
@@ -40,7 +40,7 @@ body {
 		left: 0;
 		right: 0;
 
-		background-color: $accent;
+		background-color: $dark;
 		opacity: .8;
 
 		z-index: 1;
@@ -48,9 +48,13 @@ body {
 }
 
 .container {
-	width: $main-container-width;
-	margin: 10em auto;
+	width: $md-container-width;
+	margin: 0 auto;
 	overflow: hidden;
+}
+
+.content-wrapper {
+	margin-top: 10em;
 }
 
 img {
@@ -58,19 +62,66 @@ img {
 }
 
 .logo {
-	max-width: 250px;
+	max-width: 100px;
+	margin-bottom: $margin-m;
+	display: inline-block;
+
+	&.logo--big {
+		max-width: 200px;
+	}
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: $bold-weight;
+	line-height: $heading-line-height;
 	margin-bottom: $margin-m;
 }
 
-h5 {
-	font-size: 1.3em;
-	font-weight: $main-weight;
-	line-height: $heading-line-height;
-	margin-bottom: $margin-l;
+h3 {
+	font-size: 2em;
+}
+h4 {
+	font-size: 1.6em;
 }
 
 p {
 	margin-bottom: $margin-m;
+}
+
+a.btn {
+	font: $main-weight $size-s $main-family;
+	text-decoration: none;
+
+	@include border($color: $accent);
+	background-color: $accent;
+	color: $white;
+
+	padding: $margin-s $margin-m;
+	border-radius: $border-radius;
+
+	display: inline-block;
+	@include transition(all);
+
+	&.btn--outlined {
+		background-color: transparent;
+		color: $accent;
+	}
+
+	&:hover {
+		background-color: $accent;
+		color: $white;
+	}
+}
+
+.masthead {
+	font-size: $size-s;
+	padding-top: $margin-m;
+	.logo {
+		float: left;
+	}
+	nav {
+		float: right;
+	}
 }
 
 .column.two-third {
@@ -81,7 +132,6 @@ p {
 	@include column(5);
 }
 
-.sign-up {
-	width: 100%;
-	max-width: 350px;
+.text-center {
+	text-align: center;
 }

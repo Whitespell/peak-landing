@@ -1,5 +1,5 @@
 //tablet
-@include media($md-container-width, $main-container-width){
+@include media($md-container-width, $md-container-width){
 
     .container {
         width: $md-container-width;
