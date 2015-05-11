@@ -107,8 +107,7 @@ a.btn {
 	@include transition(all);
 
 	&.btn--outlined {
-		background-color: transparent;
-		color: $accent;
+		background-color: rgba($accent, .2);
 	}
 
 	&:hover {
@@ -120,9 +119,11 @@ a.btn {
 .masthead {
 	font-size: $size-s;
 	padding-top: $margin-m;
+
 	.logo {
 		float: left;
 	}
+
 	nav {
 		float: right;
 	}
