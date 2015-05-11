@@ -155,9 +155,9 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                 //send email
                 BsendBtn.addClass('is-mailing');
 
-                var onRes = function(res){
+                var onRes = function(res, xhr){
                     BsendBtn.removeClass('is-mailing');
-                    if(res.user_id) {
+                    if(xhr.status === 200) {
                         showState('success', true);
                         document.activeElement.blur();
                     } else {
@@ -166,7 +166,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                 };
 
                 B.ajax({
-                    url: 'http://peakapi.whitespell.com',
+                    url: 'https://peakapi.whitespell.com',
                     type: 'post',
                     data: 'username='+usernameVal+'&email='+emailVal+'&password='+passVal+'&publisher='+(getParameterByName('publisher') ? 1 : 0),
                     dataType: 'json',

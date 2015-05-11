@@ -74,9 +74,9 @@
                 //send email
                 BsendBtn.addClass('is-mailing');
 
-                var onRes = function(res){
+                var onRes = function(res, xhr){
                     BsendBtn.removeClass('is-mailing');
-                    if(res.user_id) {
+                    if(xhr.status === 200) {
                         showState('success', true);
                         document.activeElement.blur();
                     } else {
@@ -85,7 +85,7 @@
                 };
 
                 B.ajax({
-                    url: 'http://peakapi.whitespell.com',
+                    url: 'https://peakapi.whitespell.com',
                     type: 'post',
                     data: 'username='+usernameVal+'&email='+emailVal+'&password='+passVal+'&publisher='+(getParameterByName('publisher') ? 1 : 0),
                     dataType: 'json',
