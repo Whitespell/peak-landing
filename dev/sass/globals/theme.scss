@@ -90,7 +90,6 @@ p {
 
 a {
 	color: $white;
-	text-decoration: none;
 }
 
 a.btn {
@@ -99,6 +98,8 @@ a.btn {
 	@include border($color: $accent);
 	background-color: $accent;
 	color: $white;
+
+	text-decoration: none;
 
 	padding: $margin-s $margin-m;
 	border-radius: $border-radius;
@@ -163,5 +164,28 @@ a.btn {
 
 	img {
 		width: 100%;
+	}
+}
+
+.notification {
+	font-size: $size-s;
+	padding: $margin-s $margin-m;
+	background-color: rgba($red, .8);
+	margin-bottom: $margin-m;
+
+	max-width: 300px;
+	margin-right: auto;
+	margin-left: auto;
+	@include border($color: $red);
+
+	border-radius: $border-radius;
+
+	&.notification--success {
+		background-color: rgba($accent, .8);
+		@include border($color: $accent);
+	}
+
+	&.notification--is-hidden {
+		display: none;
 	}
 }

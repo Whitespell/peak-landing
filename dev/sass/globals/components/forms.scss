@@ -28,7 +28,7 @@ input, .button--send {
             border-color: $red;
         }
 
-        &:after {
+        &:before {
             content: attr(data-error-msg);
             font-size: $size-s;
             color: $red;
