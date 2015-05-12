@@ -124,7 +124,7 @@
             };
 
             B.ajax({
-                url: 'https://peakapi.whitespell.com',
+                url: 'https://peakapi.whitespell.com/users',
                 type: 'post',
                 data: 'username='+validation.inputs.username+'&email='+validation.inputs.email+'&password='+validation.inputs.password+'&publisher='+(WS.utils.getParameterByName('publisher') ? 1 : 0),
                 dataType: 'json',

@@ -247,7 +247,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
             };
 
             B.ajax({
-                url: 'https://peakapi.whitespell.com',
+                url: 'https://peakapi.whitespell.com/users',
                 type: 'post',
                 data: 'username='+validation.inputs.username+'&email='+validation.inputs.email+'&password='+validation.inputs.password+'&publisher='+(WS.utils.getParameterByName('publisher') ? 1 : 0),
                 dataType: 'json',
