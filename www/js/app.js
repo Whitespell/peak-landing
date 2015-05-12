@@ -106,6 +106,9 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
 
         init: function(){
             this._el = WS.utils._gebi('notification');
+
+            if(!this._el) return;
+
             this._Bel = B(this._el);
         },
 
