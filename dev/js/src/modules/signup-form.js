@@ -116,6 +116,8 @@
             var onRes = function(res, xhr){
                 BsendBtn.removeClass('button--send--is-mailing');
 
+                console.log(res);
+
                 if(xhr.status === 200) {
                     self._showState('success', true);
                     document.activeElement.blur();
@@ -129,7 +131,12 @@
             B.ajax({
                 url: 'https://peakapi.whitespell.com/users',
                 type: 'post',
-                data: 'username='+validation.inputs.username+'&email='+validation.inputs.email+'&password='+validation.inputs.password+'&publisher='+(WS.utils.getParameterByName('publisher') ? 1 : 0),
+                data: {
+                    username: validation.inputs.username,
+                    email: validation.inputs.email,
+                    password: validation.inputs.password,
+                    publisher: (WS.utils.getParameterByName('publisher') ? 1 : 0)
+                },
                 dataType: 'json',
                 success: onRes
             });
