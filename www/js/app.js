@@ -79,104 +79,184 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
 
 };
 
-(function(){
+(function(WS, undefined){
 
     'use strict';
 
-    var _gebi = function(id){
-        return document.getElementById(id);
+    WS.utils = {
+
+        _gebi: function(id){
+            return document.getElementById(id);
+        },
+
+        getParameterByName: function(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
     };
 
-    var getParameterByName = function(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}(window.WS = window.WS || {}));
+
+//random bg image
+(function(WS, undefined){
+
+    'use strict';
+
+    WS.randomBg = {
+
+        init: function(){
+            var options = ['skater.jpg', 'runner-clouds.jpeg', 'nomad.jpg'],
+                pickedImgUrl = options[Math.floor((Math.random()*(options.length))+0)],
+                el = document.getElementsByClassName('bg')[0];
+
+            el.setAttribute('style', 'background-image: url(/img/'+pickedImgUrl+');');
+        }
+
     };
 
-    //random bg image
-    (function(){
-        var options = ['skater.jpg', 'runner-clouds.jpeg', 'nomad.jpg'],
-            pickedImgUrl = options[Math.floor((Math.random()*(options.length))+0)],
-            el = document.getElementsByClassName('bg')[0];
+    WS.randomBg.init();
 
-        el.setAttribute('style', 'background-image: url(/img/'+pickedImgUrl+');');
-    }());
+}(window.WS = window.WS || {}));
 
-    //email
-    (function(){
+//signup form
+(function(WS, undefined){
 
-        var emailForm = _gebi('signup-form');
+    'use strict';
 
-        if(!emailForm) return;
+    WS.signupForm = {
 
-        var usernameInput = _gebi('signup-username-input'),
-            emailInput = _gebi('signup-email-input'),
-            passInput = _gebi('signup-pass-input'),
-            sendBtn = _gebi('signup-send-btn'),
+        init: function(){
+            this._el = WS.utils._gebi('signup-form');
+            if(!this._el) return;
 
-            BsendBtn = B(sendBtn),
+            this._performingState = false;
 
-            performingState = false,
-            showState = function(stateName, freezeOnState){
-                performingState = true;
+            var sendBtn = WS.utils._gebi('signup-send-btn');
+            this._BsendBtn = B(sendBtn);
 
-                BsendBtn.addClass('is-hidden');
-                setTimeout(function(){
-                    BsendBtn.removeClass('is-hidden');
-                    BsendBtn.addClass('is-'+stateName);
+            this._bindEvents();
+        },
 
-                    if(!freezeOnState){
+        _bindEvents: function(){
+            B(this._el).on('submit', this._send.bind(this));
+            this._BsendBtn.click(this._send.bind(this));
+        },
+
+        _showState: function(stateName, freezeOnState){
+            var self = this,
+                BsendBtn = this._BsendBtn;
+
+            this._performingState = true;
+
+            BsendBtn.addClass('button--send--is-hidden');
+            setTimeout(function(){
+                BsendBtn.removeClass('button--send--is-hidden');
+                BsendBtn.addClass('button--send--is-'+stateName);
+
+                if(!freezeOnState){
+                    setTimeout(function(){
+                        BsendBtn.addClass('button--send--is-hidden');
                         setTimeout(function(){
-                            BsendBtn.addClass('is-hidden');
-                            setTimeout(function(){
-                                BsendBtn.removeClass('is-'+stateName);
-                                BsendBtn.removeClass('is-hidden');
-                                performingState = false;
-                            }, 300);
-                        }, 1000);
-                    }
-                }, 300);
-            },
+                            BsendBtn.removeClass('button--send--is-'+stateName);
+                            BsendBtn.removeClass('button--send--is-hidden');
+                            self._performingState = false;
+                        }, 300);
+                    }, 1000);
+                }
+            }, 300);
+        },
 
-            sendMail = function(e){
-                e.preventDefault();
-                if(performingState) return false;
+        _validate: function(){
+            var inputs = this._el.getElementsByTagName('input'),
+                inputsList = {},
+                formValid = true;
 
-                var usernameVal = usernameInput.value,
-                    emailVal = emailInput.value,
-                    passVal = passInput.value;
+            //loop inputs
+            for(var i = 0, inputsl = inputs.length; i < inputsl; i++){
+                var curr = inputs[i],
+                    val = curr.value;
 
-                if(!usernameVal || !passVal || !/.+\@.+\..+/.test(emailVal)){
-                    showState('error');
-                    return false;
+                //add to inputs list
+                inputsList[curr.getAttribute('name')] = val;
+
+                //check if input is required
+                if(!curr.hasAttribute('required')){
+                    continue;
                 }
 
-                //send email
-                BsendBtn.addClass('is-mailing');
+                //check if input is valid
+                var valid;
+                switch(curr.getAttribute('type')){
+                    case 'email':
+                        valid = (/.+\@.+\..+/.test(val));
+                        break;
+                    default:
+                        valid = (val !== '');
+                        break;
+                }
 
-                var onRes = function(res, xhr){
-                    BsendBtn.removeClass('is-mailing');
-                    if(xhr.status === 200) {
-                        showState('success', true);
-                        document.activeElement.blur();
-                    } else {
-                        showState('error');
-                    }
+                if(!valid){
+                    B(curr.parentNode).addClass('input-wrapper--has-error');
+                    formValid = false;
+                } else {
+                    B(curr.parentNode).removeClass('input-wrapper--has-error');
+                }
+            }
+
+            //check if form is valid
+            if(!formValid){
+                return {
+                    success: false,
+                    inputs: inputsList
                 };
+            } else {
+                return {
+                    success: true,
+                    inputs: inputsList
+                };
+            }
+        },
 
-                B.ajax({
-                    url: 'https://peakapi.whitespell.com',
-                    type: 'post',
-                    data: 'username='+usernameVal+'&email='+emailVal+'&password='+passVal+'&publisher='+(getParameterByName('publisher') ? 1 : 0),
-                    dataType: 'json',
-                    success: onRes
-                });
+        _send: function(e){
+            e.preventDefault();
+            if(this._performingState) return false;
+
+            var BsendBtn = this._BsendBtn,
+                self = this,
+                validation = this._validate();
+
+            if(!validation.success){
+                self._showState('error');
+                return false;
+            }
+
+            //send email
+            BsendBtn.addClass('is-mailing');
+
+            var onRes = function(res, xhr){
+                BsendBtn.removeClass('button--send--is-mailing');
+                if(xhr.status === 200) {
+                    self._showState('success', true);
+                    document.activeElement.blur();
+                } else {
+                    self._showState('error');
+                }
             };
 
-        B(emailForm).on('submit', sendMail);
-        BsendBtn.click(sendMail);
+            B.ajax({
+                url: 'https://peakapi.whitespell.com',
+                type: 'post',
+                data: 'username='+validation.inputs.username+'&email='+validation.inputs.email+'&password='+validation.inputs.password+'&publisher='+(WS.utils.getParameterByName('publisher') ? 1 : 0),
+                dataType: 'json',
+                success: onRes
+            });
+        }
 
-    }());
+    };
 
-}());
+    WS.signupForm.init();
+
+}(window.WS = window.WS || {}));

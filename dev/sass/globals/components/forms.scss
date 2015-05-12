@@ -1,0 +1,139 @@
+form {
+    width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+input, .button--send {
+    font-size: $size-m;
+
+    border-radius: $border-radius;
+    display: block;
+
+    padding: $margin-s $margin-m;
+    float: left;
+    overflow: hidden;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.input-wrapper {
+    overflow: hidden;
+    margin-bottom: $margin-s;
+
+    &.input-wrapper--has-error {
+        input {
+            border-color: $red;
+        }
+
+        &:after {
+            content: attr(data-error-msg);
+            font-size: $size-s;
+            color: $red;
+            float: left;
+        }
+    }
+}
+
+input {
+    font: $main-weight $size-m $main-family;
+    width: 100%;
+    max-width: 300px;
+    height: 45px;
+
+    @include border($color: $accent);
+    background-color: rgba($accent, .2);
+    color: $white;
+
+    -webkit-appearance: none;
+
+    &::-webkit-input-placeholder {
+       color: $white;
+       opacity: .8;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+       color: $white;
+       opacity: .8;
+    }
+    &::-moz-placeholder {  /* Firefox 19+ */
+       color: $white;
+       opacity: .8;
+    }
+    &:-ms-input-placeholder {
+       color: $white;
+       opacity: .8;
+    }
+}
+
+.button--send {
+    width: 50px;
+    text-align: center;
+
+    height: 40px;
+    line-height: 45px;
+
+    padding: 0;
+    font-size: $size-m;
+    float: right;
+
+    @include transition(all);
+
+    color: $white;
+    background-color: $accent;
+
+    padding-bottom: 5px;
+    cursor: pointer;
+
+    &__icon:before {
+        position: relative;
+        content: 'send';
+        @include transition(opacity, $duration: $transition-duration);
+    }
+
+    &.button--send--is-hidden &__icon:before {
+        opacity: 0;
+    }
+    &.button--send--is-mailing &__icon:before {
+        content: 'mail';
+        animation: mail-icon-mailing 1.5s ease infinite;
+    }
+    &.button--send--is-success &__icon:before {
+        content: 'check';
+    }
+    &.button--send--is-error &__icon:before {
+        content: 'delete';
+    }
+
+    &:hover {
+        background-color: darken($accent, 5%);
+    }
+}
+
+@keyframes mail-icon-mailing {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 40px;
+    }
+
+    51% {
+        left: 40px;
+        opacity: 0;
+    }
+    52% {
+        left: -40px;
+        opacity: 0;
+    }
+    53% {
+        left: -40px;
+        opacity: 1;
+    }
+
+    100% {
+        left: 0;
+    }
+}

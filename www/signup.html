@@ -71,20 +71,30 @@
 
       <section class="content-wrapper text-center">
         
-<h1 class="logo logo--big"><img src="/img/peak-logo.svg" alt="Peak Logo"></h1>
+<h1 class="logo logo--big">
+  <img src="/img/peak-logo.svg" alt="Peak Logo">
+</h1>
 
 <form action="#" method="post" id="signup-form">
-  <div class="input-wrapper">
-    <input id="signup-username-input" class="input-wrapper__input" name="username" type="text"
+
+  <div class="input-wrapper" data-error-msg="Please enter a valid username">
+    <input id="signup-username-input" name="username" type="text"
     placeholder="Create a username" required>
-    <input id="signup-email-input" class="input-wrapper__input" name="email" type="email"
-    placeholder="Your email address" required>
-    <input id="signup-pass-input" class="input-wrapper__input" name="password" type="password"
-    placeholder="Create a password" required>
-      <span id="signup-send-btn" class="input-wrapper__icon-wrapper ss-icon ss-standard">
-        <span class="input-wrapper__icon-wrapper__icon"></span>
-      </span>
   </div>
+
+  <div class="input-wrapper" data-error-msg="Please enter a valid email">
+    <input id="signup-email-input" name="email" type="email"
+    placeholder="Your email address" required>
+  </div>
+
+  <div class="input-wrapper" data-error-msg="Please enter a valid password">
+    <input id="signup-pass-input" name="password" type="password"
+    placeholder="Create a password" required>
+  </div>
+
+  <span id="signup-send-btn" class="button--send ss-icon ss-standard">
+    <span class="button--send__icon"></span>
+  </span>
 </form>
       </section>
     </div>
