@@ -122,7 +122,7 @@
                     WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
                 } else {
                     self._showState('error');
-                    WS.notification.show('error', 'Looks like something went wrong, please try again or <a href="mailto:support@whitespell.com?subject=Got a '+xhr.status+' error on '+window.location.href+'">notify</a> us.');
+                    WS.notification.show('error', 'Looks like something went wrong, please try again or <a href="mailto:info@whitespell.com?subject=Got a '+xhr.status+' error on '+window.location.href+'">notify</a> us.');
                 }
             };
 

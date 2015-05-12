@@ -287,7 +287,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                     WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
                 } else {
                     self._showState('error');
-                    WS.notification.show('error', 'Looks like something went wrong, please try again or <a href="mailto:support@whitespell.com?subject=Got a '+xhr.status+' error on '+window.location.href+'">notify</a> us.');
+                    WS.notification.show('error', 'Looks like something went wrong, please try again or <a href="mailto:info@whitespell.com?subject=Got a '+xhr.status+' error on '+window.location.href+'">notify</a> us.');
                 }
             };
 

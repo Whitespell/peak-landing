@@ -1,0 +1,12 @@
+.masthead {
+    font-size: $size-s;
+    padding-top: $margin-m;
+
+    .logo {
+        float: left;
+    }
+
+    nav {
+        float: right;
+    }
+}

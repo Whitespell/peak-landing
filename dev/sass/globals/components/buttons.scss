@@ -1,0 +1,24 @@
+a.btn {
+    font: $main-weight $size-s $main-family;
+
+    @include border($color: $accent);
+    background-color: $accent;
+    color: $white;
+
+    text-decoration: none;
+
+    padding: $margin-s $margin-m;
+    border-radius: $border-radius;
+
+    display: inline-block;
+    @include transition(all);
+
+    &.btn--outlined {
+        background-color: rgba($accent, .2);
+    }
+
+    &:hover {
+        background-color: $accent;
+        color: $white;
+    }
+}

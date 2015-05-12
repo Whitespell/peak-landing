@@ -1,0 +1,9 @@
+.logo {
+    max-width: 100px;
+    margin-bottom: $margin-m;
+    display: inline-block;
+
+    &.logo--big {
+        max-width: 200px;
+    }
+}
