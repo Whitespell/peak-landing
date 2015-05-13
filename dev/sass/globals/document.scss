@@ -11,11 +11,10 @@ body {
 	font: $main-weight $size-m $main-family;
 	color: $base-color;
 	line-height: $line-height;
-	overflow: hidden;
 }
 
 .bg {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -54,5 +53,5 @@ body {
 }
 
 .content-wrapper {
-	margin-top: 10em;
+	margin-top: 8em;
 }

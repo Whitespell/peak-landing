@@ -1,6 +1,12 @@
 .masthead {
     font-size: $size-s;
     padding-top: $margin-m;
+    overflow: hidden;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
     .logo {
         float: left;
