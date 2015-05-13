@@ -113,17 +113,18 @@
             //send email
             BsendBtn.addClass('is-mailing');
 
-            var onRes = function(res, xhr){
+            var onSuccess = function(res, xhr){
                 BsendBtn.removeClass('button--send--is-mailing');
 
-                console.log(res);
-
-                if(xhr.status === 200) {
-                    self._showState('success', true);
-                    document.activeElement.blur();
-                    WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
+                self._showState('success', true);
+                document.activeElement.blur();
+                WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
+            },
+            onError = function(res, xhr){
+                self._showState('error');
+                if(res.errorMessage){
+                    WS.notification.show('error', res.errorMessage);
                 } else {
-                    self._showState('error');
                     WS.notification.show('error', 'Looks like something went wrong, please try again or <a href="mailto:info@whitespell.com?subject=Got a '+xhr.status+' error on '+window.location.href+'">notify</a> us.');
                 }
             };
@@ -138,7 +139,8 @@
                     publisher: (WS.utils.getParameterByName('publisher') ? 1 : 0)
                 },
                 dataType: 'json',
-                success: onRes
+                success: onSuccess,
+                error: onError
             });
         }
 
