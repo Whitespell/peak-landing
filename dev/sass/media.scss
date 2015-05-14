@@ -26,13 +26,17 @@
     }
 
     .content-wrapper {
-        margin-top: 2em;
+        margin-top: 1.5em;
     }
 
     .masthead {
         nav {
             width: 100%;
             float: none;
+
+            .list li {
+                margin-bottom: 5px;
+            }
         }
     }
 
