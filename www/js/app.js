@@ -363,7 +363,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
             }
 
             //send email
-            BsendBtn.addClass('is-mailing');
+            BsendBtn.addClass('button--send--is-mailing');
 
             var onSuccess = function(res, xhr){
                 BsendBtn.removeClass('button--send--is-mailing');
@@ -373,6 +373,8 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                 WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
             },
             onError = function(res, xhr){
+                BsendBtn.removeClass('button--send--is-mailing');
+
                 self._showState('error');
                 if(res.errorMessage){
                     WS.notification.show('error', res.errorMessage);

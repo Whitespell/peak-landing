@@ -68,47 +68,66 @@ input {
 }
 
 .button--send {
-    width: 50px;
-    text-align: center;
-
-    height: 40px;
-    line-height: 45px;
-
-    padding: 0;
-    font-size: $size-m;
-    float: right;
-
-    @include transition(all);
-
     color: $white;
     background-color: $accent;
-
-    padding-bottom: 5px;
+    padding: 0;
     cursor: pointer;
 
-    &__icon:before {
-        position: relative;
-        content: 'send';
-        @include transition(opacity, $duration: $transition-duration);
-    }
+    text-decoration: none;
 
-    &.button--send--is-hidden &__icon:before {
-        opacity: 0;
-    }
-    &.button--send--is-mailing &__icon:before {
-        content: 'mail';
-        animation: mail-icon-mailing 1.5s ease infinite;
-    }
-    &.button--send--is-success &__icon:before {
-        content: 'check';
-    }
-    &.button--send--is-error &__icon:before {
-        content: 'delete';
-    }
+    float: right;
+    @include transition(all);
 
     &:hover {
         background-color: darken($accent, 5%);
     }
+
+    &.button--send--is-hidden &__icon-wrapper__icon:before {
+        opacity: 0;
+    }
+    &.button--send--is-mailing &__icon-wrapper__icon:before {
+        content: 'mail';
+        animation: mail-icon-mailing 1.5s ease infinite;
+    }
+    &.button--send--is-success &__icon-wrapper__icon:before {
+        content: 'check';
+    }
+    &.button--send--is-error &__icon-wrapper__icon:before {
+        content: 'delete';
+    }
+
+    &__text-wrapper {
+        font-size: $size-s;
+        line-height: 40px;
+        padding: $margin-s $margin-m;
+    }
+
+    &__icon-wrapper {
+        width: 50px;
+        text-align: center;
+
+        height: 40px;
+        line-height: 45px;
+
+        padding: 0;
+        font-size: $size-m;
+        float: left;
+
+        overflow: hidden;
+
+        @include transition(all);
+        @include border(right, $color: darken($accent, 5%));
+
+        padding-bottom: 5px;
+        cursor: pointer;
+
+        &__icon:before {
+            position: relative;
+            content: 'send';
+            @include transition(opacity, $duration: $transition-duration);
+        }
+    }
+
 }
 
 @keyframes mail-icon-mailing {

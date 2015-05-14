@@ -111,7 +111,7 @@
             }
 
             //send email
-            BsendBtn.addClass('is-mailing');
+            BsendBtn.addClass('button--send--is-mailing');
 
             var onSuccess = function(res, xhr){
                 BsendBtn.removeClass('button--send--is-mailing');
@@ -121,6 +121,8 @@
                 WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
             },
             onError = function(res, xhr){
+                BsendBtn.removeClass('button--send--is-mailing');
+
                 self._showState('error');
                 if(res.errorMessage){
                     WS.notification.show('error', res.errorMessage);
