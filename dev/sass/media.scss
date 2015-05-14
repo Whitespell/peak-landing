@@ -26,11 +26,14 @@
     }
 
     .content-wrapper {
-        margin-top: 6em;
+        margin-top: 2em;
     }
 
     .masthead {
-        background-color: rgba($dark, .2);
+        nav {
+            width: 100%;
+            float: none;
+        }
     }
 
     .logo {

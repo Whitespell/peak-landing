@@ -1,7 +1,12 @@
-.column.two-third {
+.column {
+    width: 100%;
+    overflow: hidden;
+}
+
+.column.column--two-third {
     @include column(7);
 }
 
-.column.one-third {
+.column.column--one-third {
     @include column(5);
 }

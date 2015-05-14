@@ -1,4 +1,4 @@
-a.btn {
+.btn {
     font: $main-weight $size-s $main-family;
 
     @include border($color: $accent);
@@ -13,12 +13,26 @@ a.btn {
     display: inline-block;
     @include transition(all);
 
-    &.btn--outlined {
-        background-color: rgba($accent, .2);
-    }
-
     &:hover {
         background-color: $accent;
         color: $white;
     }
+
+    &.btn--outlined {
+        background-color: rgba($accent, .2);
+    }
+
+    .ss-icon {
+        display: inline-block;
+        position: relative;
+        top: 2px;
+        margin-right: $margin-xs;
+    }
+}
+
+.btn.btn--clean {
+    padding: 0;
+    color: $base-color;
+    background-color: transparent;
+    border: none;
 }

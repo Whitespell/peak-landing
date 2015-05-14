@@ -72,7 +72,27 @@
                 <h1 class="logo"><img src="/img/peak-logo.svg" alt="Peak Logo"></h1>
             </a>
             <nav>
-                <a class="btn btn--outlined" href="/signup?publisher=1" title="Sign up as a publisher">Sign up as a publisher</a>
+                <ul class="list list--inline">
+                    <li>
+                        <a href="javascript:void(window.open('https://www.facebook.com/sharer/sharer.php?u='+window.location.href,'Share Peak','width=550,height=450'));"
+                        target="_blank" class="btn btn--clean" title="Share Peak on Facebook">
+                            <span class="ss-icon ss-social">facebook</span>
+                            Share
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(window.open('https://twitter.com/intent/tweet?text=Train together with your favorite athletes using Peak app, by @_whitespell '+window.location.href, 'Tweet about Peak','width=550,height=450'));"
+                        target="_blank" class="btn btn--clean" title="Check Peak out on Twitter">
+                            <span class="ss-icon ss-social">twitter</span>
+                            Tweet
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn--outlined" href="/signup?publisher=1" title="Sign up as a publisher">
+                            Sign up as a publisher
+                        </a>
+                    </li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -84,18 +104,22 @@
     </div>
 
     <footer class="mastfoot">
-        <ul class="list list--inline">
-            <li>
-                <a href="http://www.facebook.com/wearewhitespell" target="_blank" class="ss-icon ss-social" title="Check Peak out on Facebook">facebook</a>
-            </li>
-            <li>
-                <a href="http://twitter.com/_whitespell" target="_blank" class="ss-icon ss-social" title="Check Peak out on Twitter">twitter</a>
-            </li>
-            <li>
-                <a href="mailto:info@whitespell.com" class="ss-icon ss-social" title="Send us an email">email</a>
-            </li>
-        </ul>
-        <small>Peak is a product by <a href="http://whitespell.com" title="Whitespell's Website">Whitespell</a></small>
+        <div class="container">
+
+            <ul class="list list--inline">
+                <li>
+                    <a href="http://www.facebook.com/wearewhitespell" target="_blank" class="ss-icon ss-social" title="Check Peak out on Facebook">facebook</a>
+                </li>
+                <li>
+                    <a href="http://twitter.com/_whitespell" target="_blank" class="ss-icon ss-social" title="Check Peak out on Twitter">twitter</a>
+                </li>
+                <li>
+                    <a href="mailto:info@whitespell.com" class="ss-icon ss-social" title="Send us an email">email</a>
+                </li>
+            </ul>
+
+            <small>Peak is a product by <a href="http://whitespell.com" title="Whitespell's Website">Whitespell</a></small>
+        </div>
     </footer>
 
     <script src="/js/app.js"></script>
