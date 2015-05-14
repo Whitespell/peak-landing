@@ -17,6 +17,10 @@
         font-size: $xs-size-m;
     }
 
+    h3 {
+        font-size: 1.6em;
+    }
+
     .container {
         width: $xs-container-width;
     }
@@ -25,15 +29,23 @@
         margin-top: 6em;
     }
 
+    .masthead {
+        background-color: rgba($dark, .2);
+    }
+
+    .logo {
+        max-width: 80px;
+
+        &.logo--big {
+            max-width: 160px;
+        }
+    }
+
     .column {
         &.one-third,
         &.two-third {
             @include column(12);
         }
-    }
-
-    .input-wrapper {
-        width: 250px;
     }
 
 }

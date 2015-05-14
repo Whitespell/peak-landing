@@ -1,5 +1,6 @@
 form {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     margin: 0 auto;
     display: block;
 }
@@ -40,7 +41,6 @@ input, .button--send {
 input {
     font: $main-weight $size-m $main-family;
     width: 100%;
-    max-width: 300px;
     height: 45px;
 
     @include border($color: $accent);

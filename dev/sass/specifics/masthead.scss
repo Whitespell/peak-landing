@@ -1,6 +1,6 @@
 .masthead {
     font-size: $size-s;
-    padding-top: $margin-m;
+    padding: $margin-m 0 $margin-s 0;
     overflow: hidden;
 
     position: fixed;
@@ -10,6 +10,7 @@
 
     .logo {
         float: left;
+        margin: 0;
     }
 
     nav {
