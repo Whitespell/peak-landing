@@ -14,12 +14,8 @@
     @include transition(all);
 
     &:hover {
-        background-color: $accent;
-        color: $white;
-    }
-
-    &.btn--outlined {
-        background-color: rgba($accent, .2);
+        background-color: $accent !important;
+        color: $white !important;
     }
 
     .ss-icon {
@@ -30,9 +26,13 @@
     }
 }
 
+.btn.btn--outlined {
+    background-color: rgba($accent, .2);
+}
+
 .btn.btn--clean {
     padding: 0;
     color: $base-color;
-    background-color: transparent;
+    background-color: transparent !important;
     border: none;
 }

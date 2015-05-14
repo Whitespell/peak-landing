@@ -48,6 +48,11 @@ input {
     color: $white;
 
     -webkit-appearance: none;
+    @include transition(background-color);
+
+    &:focus {
+        background-color: rgba($accent, .4);
+    }
 
     &::-webkit-input-placeholder {
        color: $white;
