@@ -242,7 +242,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
 
             this._performingState = false;
 
-            var sendBtn = WS.utils._gebi('signup-send-btn');
+            var sendBtn = WS.utils._gebi('signup-form__send-btn');
             this._BsendBtn = B(sendBtn);
 
             this._bindEvents();

@@ -11,7 +11,7 @@
 
             this._performingState = false;
 
-            var sendBtn = WS.utils._gebi('signup-send-btn');
+            var sendBtn = WS.utils._gebi('signup-form__send-btn');
             this._BsendBtn = B(sendBtn);
 
             this._bindEvents();

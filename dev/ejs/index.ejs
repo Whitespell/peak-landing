@@ -93,12 +93,15 @@
 <div class="section section--dark">
 	<div class="container">
 		<h3>Get started training with your favorite athletes for free</h3>
+		<div class="notification notification--is-hidden" id="notification"></div>
 		<form action="#" method="post" id="signup-form" class="form--vertical">
 			<div class="input-wrapper" data-error-msg="Please enter a valid email">
 				<input id="signup-email-input" name="email" type="email" placeholder="Your email address" required>
 			</div>
 
-			<input type="submit" class="button button--send" value="Sign up for free">
+			<div class="input-wrapper">
+				<input type="submit" class="button button--send" id="signup-form__send-btn" value="Sign up for free">
+			</div>
 		</form>
 	</div>
 </div>

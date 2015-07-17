@@ -8,19 +8,22 @@ form {
         max-width: none;
 
         .input-wrapper {
+            width: 250px;
+            
             float: none;
             display: inline-block;
+
             margin: 0;
+            margin-right: $margin-m;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
 
         input {
-            width: 250px;
-            margin-right: $margin-m;
-
             &[type="submit"]{
                 margin-right: 0;
-                position: relative;
-                top: -16px;
             }
         }
 
