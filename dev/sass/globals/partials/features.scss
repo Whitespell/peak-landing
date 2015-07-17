@@ -1,0 +1,30 @@
+.feature {
+	padding-top: $margin-xxl;
+	@include border(bottom);
+
+	&__content {
+		padding-top: $margin-xl;
+
+		&__title {
+			color: $accent;
+			margin-bottom: $margin-xs;
+		}
+
+		&__sub-title {
+			font-weight: $main-weight;
+			margin-bottom: $margin-s;
+		}
+
+		&__testimonial {
+			padding-top: $margin-m;
+			padding-left: $margin-l;
+		}
+	}
+
+	&__preview {
+		max-width: 350px;
+		margin: 0 auto;
+		line-height: 0;
+	}
+
+}

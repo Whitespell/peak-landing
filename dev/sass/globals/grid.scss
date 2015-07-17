@@ -3,6 +3,10 @@
     overflow: hidden;
 }
 
+.column.column--half {
+    @include column(6);
+}
+
 .column.column--two-third {
     @include column(7);
 }

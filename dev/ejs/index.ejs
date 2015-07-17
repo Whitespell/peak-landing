@@ -1,9 +1,47 @@
 <% layout('_inc/layout') -%>
 
-<h3>Train together with your favorite athletes</h3>
-<p>High Quality Personalized Fitness Content</p>
-<a class="btn" href="/signup" title="Sign up for Peak">Sign up for free</a>
+<div class="hero">
+	<div class="container">
+		<%- include _inc/masthead %>
+		<div class="hero__content">
+			<h1 class="h2 hero__content__title">Train together with your favorite athletes</h1>
+			<p class="hero__content__sub-title">High Quality Personalized Fitness Content</p>
+			<a class="btn btn--cta hero__content__cta" href="/signup" title="Sign up for Peak">Sign up for free</a>
+		</div>
+	</div>
+	<div class="ss-icon ss-pika hero__pointer">navigatedown</div>
+</div>
 
-<section class="iphone-preview">
-    <img src="/img/peak-iphone-preview-black.png" alt="Peak Preview" />
-</section>
+
+<div class="feature">
+	<div class="container">
+		<div class="column column--half">
+			<div class="feature__content">
+				<h2 class="feature__content__title">Tell us what sports you like</h2>
+				<h4 class="feature__content__sub-title">and we’ll take care of the rest</h4>
+				<p class="feature__content__desc">
+					Gummies gingerbread muffin. Pastry bonbon chocolate cake gingerbread biscuit brownie sweet. Carrot cake candy tiramisu marzipan lemon drops. Marzipan topping chocolate bar.
+				</p>
+				<div class="feature__content__testimonial testimonial">
+					<div class="testimonial__photo">
+						<img src="/img/jordan-clarkson.jpg" />
+					</div>
+					<div class="testimonial__content">
+						<blockquote>
+							Biscuit wafer cookie candy pastry carrot cake dragée gummi bears. Jelly chocolate bar pastry gummies brownie carrot cake dragée dessert. Candy canes jelly 	tart tootsie roll candy canes bonbon jelly beans. Jujubes muffin gummies cotton candy.
+							<cite>— Jordan Clarkson</cite>
+						</blockquote>
+						<div class="testimonial__content__logo">
+							<img src="/img/lakers-logo.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="column column--half">
+			<div class="feature__preview">
+				<img src="/img/iphone-onboarding.png" />
+			</div>
+		</div>
+	</div>
+</div>

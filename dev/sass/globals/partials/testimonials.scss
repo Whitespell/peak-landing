@@ -1,0 +1,38 @@
+.testimonial {
+	font-size: $size-s;
+
+	&__photo {
+		width: 60px;
+		height: 60px;
+		overflow: hidden;
+
+		float: left;
+		margin-right: $margin-m;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	&__content {
+		overflow: hidden;
+	
+		blockquote {
+			font-style: italic;
+			cite {
+				display: block;
+				margin-top: $margin-s;
+			}
+		}
+
+		&__logo {
+			height: 30px;
+			margin-top: $margin-m;
+			img {
+				width: auto;
+				height: 100%;
+			}
+		}
+	}
+
+}
