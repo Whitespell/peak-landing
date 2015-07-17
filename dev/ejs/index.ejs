@@ -13,35 +13,40 @@
 </div>
 
 
-<div class="feature">
-	<div class="container">
-		<div class="column column--half">
-			<div class="feature__content">
-				<h2 class="feature__content__title">Tell us what sports you like</h2>
-				<h4 class="feature__content__sub-title">and we’ll take care of the rest</h4>
-				<p class="feature__content__desc">
-					Gummies gingerbread muffin. Pastry bonbon chocolate cake gingerbread biscuit brownie sweet. Carrot cake candy tiramisu marzipan lemon drops. Marzipan topping chocolate bar.
-				</p>
-				<div class="feature__content__testimonial testimonial">
-					<div class="testimonial__photo">
-						<img src="/img/jordan-clarkson.jpg" />
-					</div>
-					<div class="testimonial__content">
-						<blockquote>
-							Biscuit wafer cookie candy pastry carrot cake dragée gummi bears. Jelly chocolate bar pastry gummies brownie carrot cake dragée dessert. Candy canes jelly 	tart tootsie roll candy canes bonbon jelly beans. Jujubes muffin gummies cotton candy.
-							<cite>— Jordan Clarkson</cite>
-						</blockquote>
-						<div class="testimonial__content__logo">
-							<img src="/img/lakers-logo.png" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="column column--half">
-			<div class="feature__preview">
-				<img src="/img/iphone-onboarding.png" />
-			</div>
-		</div>
-	</div>
-</div>
+<%- partial('_inc/feature', {
+		title: 'Tell us what sports you like',
+		sub_title: 'and we’ll take care of the rest',
+		desc: 'Gummies gingerbread muffin. Pastry bonbon chocolate cake gingerbread biscuit brownie sweet. Carrot cake candy tiramisu marzipan lemon drops. Marzipan topping chocolate bar.',
+		previewSrc: 'iphone-onboarding.png',
+		testimonial: {
+			imgSrc: 'jordan-clarkson.jpg',
+			quote: 'Biscuit wafer cookie candy pastry carrot cake dragée gummi bears. Jelly chocolate bar pastry gummies brownie carrot cake dragée dessert. Candy canes jelly tart tootsie roll candy canes bonbon jelly beans. Jujubes muffin gummies cotton candy.',
+			cite: 'Jordan Clarkson',
+			logo: {
+				src: 'lakers-logo.png',
+				isVertical: false
+			}
+		},
+		options: {
+			reversed: false
+		}
+	}) %>
+
+<%- partial('_inc/feature', {
+		title: 'Get a personalised timeline',
+		sub_title: 'With highly exclusive fitness content',
+		desc: 'Gummies gingerbread muffin. Pastry bonbon chocolate cake gingerbread biscuit brownie sweet. Carrot cake candy tiramisu marzipan lemon drops. Marzipan topping chocolate bar.',
+		previewSrc: 'iphone-onboarding.png',
+		testimonial: {
+			imgSrc: 'dwyane-wade.jpg',
+			quote: 'Biscuit wafer cookie candy pastry carrot cake dragée gummi bears. Jelly chocolate bar pastry gummies brownie carrot cake dragée dessert. Candy canes jelly tart tootsie roll candy canes bonbon jelly beans. Jujubes muffin gummies cotton candy.',
+			cite: 'Dwyane Wade',
+			logo: {
+				src: 'miami-heat-logo.png',
+				isVertical: true
+			}
+		},
+		options: {
+			reversed: true
+		}
+	}) %>

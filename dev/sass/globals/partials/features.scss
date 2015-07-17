@@ -2,8 +2,12 @@
 	padding-top: $margin-xxl;
 	@include border(bottom);
 
+	&.feature--bg {
+		background-color: rgba($grey-light, .1);
+	}
+
 	&__content {
-		padding-top: $margin-xl;
+		padding-top: $margin-l;
 
 		&__title {
 			color: $accent;
