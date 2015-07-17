@@ -22,3 +22,14 @@ body {
 	margin: 0 auto;
 	overflow: hidden;
 }
+
+.section {
+	width: 100%;
+	padding: $margin-xxl 0;
+	color: $white;
+	text-align: center;
+
+	&.section--dark {
+		background-color: $dark;
+	}
+}

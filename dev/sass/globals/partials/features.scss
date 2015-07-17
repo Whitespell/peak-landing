@@ -2,6 +2,10 @@
 	padding-top: $margin-xxl;
 	@include border(bottom);
 
+	&.feature--no-border-bottom {
+		border-bottom: none;
+	}
+
 	&.feature--bg {
 		background-color: rgba($grey-light, .1);
 	}

@@ -3,6 +3,32 @@ form {
     max-width: 300px;
     margin: 0 auto;
     display: block;
+
+    &.form--vertical {
+        max-width: none;
+
+        .input-wrapper {
+            float: none;
+            display: inline-block;
+            margin: 0;
+        }
+
+        input {
+            width: 250px;
+            margin-right: $margin-m;
+
+            &[type="submit"]{
+                margin-right: 0;
+                position: relative;
+                top: -16px;
+            }
+        }
+
+        .button--send {
+            float: none;
+            display: inline-block;
+        }
+    }
 }
 
 input, .button--send {
@@ -52,6 +78,10 @@ input {
 
     &:focus {
         background-color: rgba($accent, .4);
+    }
+
+    &[type="submit"]:focus {
+        background-color: rgba($accent, 1);
     }
 
     &::-webkit-input-placeholder {
