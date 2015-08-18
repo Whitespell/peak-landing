@@ -427,7 +427,9 @@ new WS.httpFormHelper({
     'use strict';
 
     //get token
-    document.getElementById('token-input').value = WS.utils.getParameterByName('token');
+    var inputEl = document.getElementById('token-input');
+    if(!inputEl) return;
+    inputEl.value = WS.utils.getParameterByName('token');
 
     //
     new WS.httpFormHelper({
