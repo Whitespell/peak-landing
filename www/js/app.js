@@ -189,64 +189,22 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
 
 (function(WS, undefined){
 
-    WS.notification = {
-
-        init: function(){
-            this._el = WS.utils._gebi('notification');
-
-            if(!this._el) return;
-
-            this._Bel = B(this._el);
-        },
-
-        show: function(state, content){
-            var Bel = this._Bel;
-
-            this._el.innerHTML = content;
-
-            Bel.removeClass('notification--error');
-            Bel.removeClass('notification--success');
-
-            switch(state){
-                case 'error':
-                    Bel.addClass('notification--error');
-                    break;
-                case 'success':
-                    Bel.addClass('notification--success');
-                    break;
-            }
-
-            Bel.removeClass('notification--is-hidden');
-        },
-
-        hide: function(){
-            this._Bel.addClass('notification--is-hidden');
-        }
-
-    };
-
-    WS.notification.init();
-
-}(window.WS = window.WS || {}));
-
-//signup form
-(function(WS, undefined){
-
     'use strict';
 
-    WS.signupForm = {
+    WS.httpFormHelper = function(options){
+        this._el = WS.utils._gebi(options.selector);
+        if(!this._el) return;
 
-        init: function(){
-            this._el = WS.utils._gebi('signup-form');
-            if(!this._el) return;
+        this._options = options;
+        this._performingState = false;
 
-            this._performingState = false;
+        var sendBtn = WS.utils._gebi(options.selector+'__send-btn');
+        this._BsendBtn = B(sendBtn);
 
-            var sendBtn = WS.utils._gebi('signup-form__send-btn');
-            this._BsendBtn = B(sendBtn);
+        this._bindEvents();
+    };
 
-            this._bindEvents();
-        },
+    WS.httpFormHelper.prototype = {
 
         _bindEvents: function(){
             B(this._el).on('submit', this._send.bind(this));
@@ -349,7 +307,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
 
                 self._showState('success', true);
                 document.activeElement.blur();
-                WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
+                self._options.onSuccess(res, xhr);
             },
             onError = function(res, xhr){
                 BsendBtn.removeClass('button--send--is-mailing');
@@ -362,23 +320,96 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                 }
             };
 
-            B.ajax({
-                url: 'https://peakapi.whitespell.com/users',
-                type: 'post',
-                data: {
-                    username: validation.inputs.username,
-                    email: validation.inputs.email,
-                    password: validation.inputs.password,
-                    publisher: (WS.utils.getParameterByName('publisher') ? 1 : 0)
-                },
-                dataType: 'json',
-                success: onSuccess,
-                error: onError
-            });
+            self._options.doRequest(validation, onSuccess, onError);
         }
 
     };
 
-    WS.signupForm.init();
+}(window.WS = window.WS || {}));
+
+
+(function(WS, undefined){
+
+    WS.notification = {
+
+        init: function(){
+            this._el = WS.utils._gebi('notification');
+            if(!this._el) return;
+
+            this._Bel = B(this._el);
+        },
+
+        show: function(state, content){
+            var Bel = this._Bel;
+
+            this._el.innerHTML = content;
+
+            Bel.removeClass('notification--error');
+            Bel.removeClass('notification--success');
+
+            switch(state){
+                case 'error':
+                    Bel.addClass('notification--error');
+                    break;
+                case 'success':
+                    Bel.addClass('notification--success');
+                    break;
+            }
+
+            Bel.removeClass('notification--is-hidden');
+        },
+
+        hide: function(){
+            this._Bel.addClass('notification--is-hidden');
+        }
+
+    };
+
+    WS.notification.init();
 
 }(window.WS = window.WS || {}));
+
+new WS.httpFormHelper({
+    selector: 'forgot-password-form',
+    onSuccess: function(){
+        WS.notification.show('success', 'Thank you! Your password has been changed');
+    },
+    doRequest: function(validation, onSuccess, onError){
+        // B.ajax({
+        //     url: 'https://peakapi.whitespell.com/users',
+        //     type: 'post',
+        //     data: {
+        //         username: validation.inputs.username,
+        //         email: validation.inputs.email,
+        //         password: validation.inputs.password,
+        //         publisher: (WS.utils.getParameterByName('publisher') ? 1 : 0)
+        //     },
+        //     dataType: 'json',
+        //     success: onSuccess,
+        //     error: onError
+        // });
+    }
+});
+
+
+new WS.httpFormHelper({
+    selector: 'signup-form',
+    onSuccess: function(){
+        WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
+    },
+    doRequest: function(validation, onSuccess, onError){
+        B.ajax({
+            url: 'https://peakapi.whitespell.com/users',
+            type: 'post',
+            data: {
+                userName: validation.inputs.username,
+                email: validation.inputs.email,
+                password: validation.inputs.password,
+                publisher: (WS.utils.getParameterByName('publisher') ? 1 : 0)
+            },
+            dataType: 'json',
+            success: onSuccess,
+            error: onError
+        });
+    }
+});

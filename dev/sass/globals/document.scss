@@ -21,6 +21,10 @@ body {
 	width: $xl-container-width;
 	margin: 0 auto;
 	overflow: hidden;
+
+	&.container--push {
+		padding-top: 4em;
+	}
 }
 
 .section {
@@ -31,5 +35,37 @@ body {
 
 	&.section--dark {
 		background-color: $dark;
+	}
+}
+
+.bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+
+	background-image: url(/img/runner-clouds.jpeg);
+	background-color: $dark;
+	background-repeat: no-repeat;
+	background-position: center center;
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+	&:after {
+		content: '';
+		
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+
+		background-color: $dark;
+		opacity: .8;
 	}
 }

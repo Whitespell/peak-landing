@@ -164,6 +164,10 @@ input {
             content: 'send';
             @include transition(opacity, $duration: $transition-duration);
         }
+
+        &__icon.button--send__icon-wrapper__icon--key:before {
+            content: 'key';
+        }
     }
 
 }
