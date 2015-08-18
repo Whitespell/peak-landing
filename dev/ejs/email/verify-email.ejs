@@ -1,0 +1,30 @@
+<% layout('../_inc/layout') -%>
+
+<div class="bg"></div>
+
+<div class="container container--push text-center text-white">
+
+    <div class="logo logo--big">
+        <img src="/img/peak-logo.svg" />
+    </div>
+    <h5>Verify your email</h5>
+
+    <div class="notification notification--is-hidden" id="notification"></div>
+
+    <form action="#" method="post" id="verify-email-form">
+        <div class="input-wrapper" data-error-msg="Enter a valid token">
+            <input id="token-input" name="token" type="text"
+                   placeholder="Safety token" required>
+        </div>
+
+        <a href="#" class="button--send" id="verify-email-form__send-btn">
+            <span class="button--send__icon-wrapper ss-icon ss-pika">
+                <span class="button--send__icon-wrapper__icon"></span>
+            </span>
+            <span class="button--send__text-wrapper">
+                Verify my email
+            </span>
+        </a>
+    </form>
+
+</div>

@@ -3,16 +3,20 @@
     'use strict';
 
     WS.httpFormHelper = function(options){
-        this._el = WS.utils._gebi(options.selector);
+        this._el = WS.utils._gebi(options.formId);
         if(!this._el) return;
 
         this._options = options;
         this._performingState = false;
 
-        var sendBtn = WS.utils._gebi(options.selector+'__send-btn');
+        var sendBtn = WS.utils._gebi(options.formId+'__send-btn');
         this._BsendBtn = B(sendBtn);
 
         this._bindEvents();
+
+        if(options.submitOnInit === true){
+            this._send();
+        }
     };
 
     WS.httpFormHelper.prototype = {
@@ -98,7 +102,10 @@
         },
 
         _send: function(e){
-            e.preventDefault();
+            if(e){
+                e.preventDefault();
+            }
+            
             if(this._performingState) return false;
 
             var BsendBtn = this._BsendBtn,

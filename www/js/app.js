@@ -192,16 +192,20 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
     'use strict';
 
     WS.httpFormHelper = function(options){
-        this._el = WS.utils._gebi(options.selector);
+        this._el = WS.utils._gebi(options.formId);
         if(!this._el) return;
 
         this._options = options;
         this._performingState = false;
 
-        var sendBtn = WS.utils._gebi(options.selector+'__send-btn');
+        var sendBtn = WS.utils._gebi(options.formId+'__send-btn');
         this._BsendBtn = B(sendBtn);
 
         this._bindEvents();
+
+        if(options.submitOnInit === true){
+            this._send();
+        }
     };
 
     WS.httpFormHelper.prototype = {
@@ -287,7 +291,10 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
         },
 
         _send: function(e){
-            e.preventDefault();
+            if(e){
+                e.preventDefault();
+            }
+            
             if(this._performingState) return false;
 
             var BsendBtn = this._BsendBtn,
@@ -370,7 +377,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
 }(window.WS = window.WS || {}));
 
 new WS.httpFormHelper({
-    selector: 'forgot-password-form',
+    formId: 'forgot-password-form',
     onSuccess: function(){
         WS.notification.show('success', 'Thank you! Your password has been changed');
     },
@@ -393,7 +400,7 @@ new WS.httpFormHelper({
 
 
 new WS.httpFormHelper({
-    selector: 'signup-form',
+    formId: 'signup-form',
     onSuccess: function(){
         WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
     },
@@ -413,3 +420,34 @@ new WS.httpFormHelper({
         });
     }
 });
+
+
+(function(WS, undefined){
+
+    'use strict';
+
+    //get token
+    document.getElementById('token-input').value = WS.utils.getParameterByName('token');
+
+    //
+    new WS.httpFormHelper({
+        formId: 'verify-email-form',
+        submitOnInit: true,
+        onSuccess: function(){
+            WS.notification.show('success', 'Your email has been verified!');
+        },
+        doRequest: function(validation, onSuccess, onError){
+            B.ajax({
+                url: 'https://peakapi.whitespell.com/emailToken',
+                type: 'post',
+                data: {
+                    emailToken: validation.inputs.token
+                },
+                dataType: 'json',
+                success: onSuccess,
+                error: onError
+            });
+        }
+    });
+
+}(window.WS = window.WS || {}));
