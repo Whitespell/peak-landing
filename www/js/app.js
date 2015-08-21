@@ -404,13 +404,14 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
             WS.notification.show('success', 'Thank you! Your password has been changed');
         },
         doRequest: function(validation, onSuccess, onError){
+            console.log(validation);
             B.ajax({
                 url: 'https://peakapi.whitespell.com/users/reset',
                 type: 'post',
                 data: {
                     resetToken: validation.inputs.token,
                     userName: validation.inputs.username,
-                    newPassword: validation.inputs.password
+                    newPassword: validation.inputs.new_password
                 },
                 dataType: 'json',
                 success: onSuccess,
