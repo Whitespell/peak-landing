@@ -79,6 +79,14 @@
                         break;
                 }
 
+                if(curr.hasAttribute('data-match')){
+                    var el = document.getElementById(curr.getAttribute('data-match'));
+                    if(el && el.value !== curr.value){
+                        B(curr.parentNode).addClass('input-wrapper--has-error--match-error');
+                        valid = false;
+                    }
+                }
+
                 if(!valid){
                     B(curr.parentNode).addClass('input-wrapper--has-error');
                     formValid = false;

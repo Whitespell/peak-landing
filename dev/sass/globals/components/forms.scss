@@ -64,6 +64,10 @@ input, .button--send {
             color: $red;
             float: left;
         }
+
+        &.input-wrapper--has-error--match-error:before {
+            content: attr(data-match-error-msg);
+        }
     }
 }
 
