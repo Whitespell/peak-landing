@@ -7,6 +7,10 @@
     if(!inputEl) return;
     inputEl.value = WS.utils.getParameterByName('token');
 
+    inputEl = document.getElementById('username-input');
+    if(!inputEl) return;
+    inputEl.value = WS.utils.getParameterByName('username');
+
     //
     new WS.httpFormHelper({
         formId: 'verify-email-form',
@@ -16,9 +20,10 @@
         },
         doRequest: function(validation, onSuccess, onError){
             B.ajax({
-                url: 'https://peakapi.whitespell.com/emailToken',
+                url: 'https://peakapi.whitespell.com/users/email',
                 type: 'post',
                 data: {
+                    userName: validation.inputs.username,
                     emailToken: validation.inputs.token
                 },
                 dataType: 'json',
