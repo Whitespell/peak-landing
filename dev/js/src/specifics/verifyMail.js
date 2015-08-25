@@ -11,6 +11,9 @@
     if(!inputEl) return;
     inputEl.value = WS.utils.getParameterByName('username');
 
+    var formEl = WS.utils._gebi('verify-email-form'),
+        socialButtonsEl = WS.utils._gebi('social-buttons');
+
     //
     new WS.httpFormHelper({
         formId: 'verify-email-form',
@@ -27,8 +30,14 @@
                     emailToken: validation.inputs.token
                 },
                 dataType: 'json',
-                success: onSuccess,
-                error: onError
+                success: function(res, xhr){
+                    B(socialButtonsEl).addClass('is-hidden--is-visible');
+                    onSuccess(res, xhr);
+                },
+                error: function(res, xhr){
+                    B(formEl).addClass('is-hidden--is-visible');
+                    onError(res, xhr);
+                }
             });
         }
     });
