@@ -7,6 +7,13 @@
     if(!inputEl) return;
     inputEl.value = WS.utils.getParameterByName('email');
 
+    //get email
+    var isPublisherSignup = !!WS.utils.getParameterByName('publisher');
+    if(isPublisherSignup){
+        var titleEl = document.getElementById('form-title');
+        titleEl.innerText = titleEl.getAttribute('data-publisher-text');
+    }
+
     new WS.httpFormHelper({
         formId: 'signup-form',
         onSuccess: function(){

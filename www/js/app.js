@@ -432,6 +432,13 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
     if(!inputEl) return;
     inputEl.value = WS.utils.getParameterByName('email');
 
+    //get email
+    var isPublisherSignup = !!WS.utils.getParameterByName('publisher');
+    if(isPublisherSignup){
+        var titleEl = document.getElementById('form-title');
+        titleEl.innerText = titleEl.getAttribute('data-publisher-text');
+    }
+
     new WS.httpFormHelper({
         formId: 'signup-form',
         onSuccess: function(){
