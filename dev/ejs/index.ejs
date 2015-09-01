@@ -1,9 +1,110 @@
 <% layout('_inc/layout') -%>
 
-<h3>Train together with your favorite athletes</h3>
-<p>High Quality Personalized Fitness Content</p>
-<a class="btn" href="/signup" title="Sign up for Peak">Sign up for free</a>
+<div class="hero">
+	<div class="container">
+		<%- include _inc/masthead %>
+		<div class="hero__content">
+			<h1 class="h2 hero__content__title">
+				Your favorite athletes, on demand
+			</h1>
+			<p class="hero__content__sub-title">Train like a pro with the Peak App</p>
+			<a class="btn btn--cta hero__content__cta" href="/signup" title="Sign up for Peak">Sign up for free</a>
+		</div>
+	</div>
+	<div class="ss-icon ss-pika hero__pointer">navigatedown</div>
+</div>
 
-<section class="iphone-preview">
-    <img src="/img/peak-iphone-preview-black.png" alt="Peak Preview" />
-</section>
+<%- partial('_inc/feature', {
+		title: 'Tell us what sports you like',
+		sub_title: 'and we’ll take care of the rest',
+		desc: 'Simply sign up, choose your categories, and allow us to do the heavy lifting, all so you can focus on...well...the heavy lifting.',
+		previewSrc: 'iphone-onboarding.png',
+		// testimonial: {
+		// 	imgSrc: 'jordan-clarkson.jpg',
+		// 	quote: 'Biscuit wafer cookie candy pastry carrot cake dragée gummi bears. Jelly chocolate bar pastry gummies brownie carrot cake dragée dessert. Candy canes jelly tart tootsie roll candy canes bonbon jelly beans. Jujubes muffin gummies cotton candy.',
+		// 	cite: 'Jordan Clarkson',
+		// 	logo: {
+		// 		src: 'lakers-logo.png',
+		// 		isVertical: false
+		// 	}
+		// },
+		options: {
+			reversed: false
+		}
+	}) %>
+
+<%- partial('_inc/feature', {
+		title: 'Get a personalised timeline',
+		sub_title: 'With highly exclusive fitness content',
+		desc: 'Peak delivers a personalized newsfeed completely tailored to your interests. From strength and agility, to sleep, nutrition, and recovery, get the latest, most relevant and reputable tips, tricks, and tips from Professional athletes around the world delivered to you instantly on the Peak App.',
+		previewSrc: 'iphone-timeline.png',
+		// testimonial: {
+		// 	imgSrc: 'dwyane-wade.jpg',
+		// 	quote: 'Biscuit wafer cookie candy pastry carrot cake dragée gummi bears. Jelly chocolate bar pastry gummies brownie carrot cake dragée dessert. Candy canes jelly tart tootsie roll candy canes bonbon jelly beans. Jujubes muffin gummies cotton candy.',
+		// 	cite: 'Dwyane Wade',
+		// 	logo: {
+		// 		src: 'miami-heat-logo.png',
+		// 		isVertical: true
+		// 	}
+		// },
+		options: {
+			reversed: true
+		}
+	}) %>
+
+<%- partial('_inc/feature', {
+		title: 'Train with your favorite athletes',
+		sub_title: 'Follow them and learn',
+		desc: 'Ever wonder how your favorite athlete prepares for the the game winning drive, got that inhuman first step, or that ungodly movement on a fastball? Well, why not ask him? Follow your favorite athletes on the Peak App so you can quit daydreaming, and start doing.',
+		previewSrc: 'iphone-player.png',
+		// testimonial: {
+		// 	imgSrc: 'robert-richard.jpg',
+		// 	quote: 'Biscuit wafer cookie candy pastry carrot cake dragée gummi bears. Jelly chocolate bar pastry gummies brownie carrot cake dragée dessert. Candy canes jelly tart tootsie roll candy canes bonbon jelly beans. Jujubes muffin gummies cotton candy.',
+		// 	cite: 'Robert Ri\'chard',
+		// 	logo: {
+		// 		src: 'imdb-logo.png',
+		// 		isVertical: false
+		// 	}
+		// },
+		options: {
+			reversed: false
+		}
+	}) %>
+
+<%- partial('_inc/feature', {
+		title: 'Create your own workouts',
+		sub_title: 'With content from your idols',
+		desc: 'See something you like? Tap the workout and save it to one of your very own workout playlists. Consider us the Spotify for Fitness.',
+		previewSrc: 'iphone-profile.png',
+		// testimonial: {
+		// 	imgSrc: 'isaiah-thomas.jpg',
+		// 	quote: 'Biscuit wafer cookie candy pastry carrot cake dragée gummi bears. Jelly chocolate bar pastry gummies brownie carrot cake dragée dessert. Candy canes jelly tart tootsie roll candy canes bonbon jelly beans. Jujubes muffin gummies cotton candy.',
+		// 	cite: 'Isaiah Thomas',
+		// 	logo: {
+		// 		src: 'boston-celtics-logo.png',
+		// 		isVertical: true
+		// 	}
+		// },
+		options: {
+			reversed: true,
+			noBorderBottom: true
+		}
+	}) %>
+
+<div class="section section--dark">
+	<div class="container">
+		<h3>Get started training with your favorite athletes for free</h3>
+		<div class="notification notification--is-hidden" id="notification"></div>
+		<form action="/signup" method="get" class="form--horizontal">
+			<div class="input-wrapper">
+				<input name="email" type="email" placeholder="Your email address">
+			</div>
+
+			<div class="input-wrapper">
+				<input type="submit" class="button button--send" id="signup-form__send-btn" value="Sign up for free">
+			</div>
+		</form>
+	</div>
+</div>
+
+<%- partial('_inc/mastfoot') %>

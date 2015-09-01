@@ -1,16 +1,33 @@
 .mastfoot {
-    margin-top: $margin-l;
+    padding: $margin-l 0;
+    color: $grey-light;
+
+    font-size: $size-s;
     text-align: center;
 
-    padding: $margin-m 0;
-    color: $white;
-
-    .container {
-        max-width: 400px;
+    a {
+        color: $grey-light;
+        text-decoration: none;
     }
 
-    .list {
-        font-size: $size-l;
-        margin-bottom: $margin-s;
+    &__logo {
+        height: 40px;
+        width: auto;
+        display: inline-block;
+
+        margin-right: $margin-m;
+        overflow: hidden;
+
+        img {
+            width: auto;
+            height: 100%;
+        }
+    }
+
+    &__content {
+        overflow: hidden;
+        display: inline-block;
+        margin: 0;
+        padding-bottom: 8px;
     }
 }

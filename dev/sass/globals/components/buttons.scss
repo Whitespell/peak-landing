@@ -2,7 +2,7 @@
     font: $main-weight $size-s $main-family;
 
     @include border($color: $accent);
-    background-color: $accent;
+    background-color: rgba($accent, .8);
     color: $white;
 
     text-decoration: none;
@@ -13,9 +13,10 @@
     display: inline-block;
     @include transition(all);
 
+    line-height: 1em;
+
     &:hover {
-        background-color: $accent !important;
-        color: $white !important;
+        background-color: rgba($accent, 1);
     }
 
     .ss-icon {
@@ -26,8 +27,17 @@
     }
 }
 
-.btn.btn--outlined {
-    background-color: rgba($accent, .2);
+.btn.btn--cta {
+    font-size: $size-m;
+    padding: $margin-s $margin-l;
+    background-color: rgba($accent-alt, .8);
+    border-color: $accent-alt;
+
+    margin-bottom: 1px;
+
+    &:hover {
+        background-color: rgba($accent-alt, 1);
+    }
 }
 
 .btn.btn--clean {

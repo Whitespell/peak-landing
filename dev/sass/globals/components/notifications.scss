@@ -4,7 +4,9 @@
     background-color: rgba($red, .8);
     margin-bottom: $margin-m;
 
-    max-width: 300px;
+    width: 100%;
+    max-width: 520px;
+    
     margin-right: auto;
     margin-left: auto;
     @include border($color: $red);

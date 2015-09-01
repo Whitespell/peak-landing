@@ -1,6 +1,10 @@
 .masthead {
-    padding: $margin-m 0 $margin-s 0;
+    padding: $margin-l 0 $margin-s 0;
     overflow: hidden;
+
+    .btn {
+        color: $white;
+    }
 
     .logo {
         float: left;

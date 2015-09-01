@@ -1,29 +1,41 @@
 <% layout('_inc/layout') -%>
 
-<div class="notification notification--is-hidden" id="notification"></div>
+<div class="bg"></div>
 
-<form action="#" method="post" id="signup-form">
-  <div class="input-wrapper" data-error-msg="Please enter a valid username">
-    <input id="signup-username-input" name="username" type="text"
-    placeholder="Create a username" required>
-  </div>
+<div class="container container--push text-center text-white">
 
-  <div class="input-wrapper" data-error-msg="Please enter a valid email">
-    <input id="signup-email-input" name="email" type="email"
-    placeholder="Your email address" required>
-  </div>
+    <div class="logo logo--big">
+        <img src="/img/peak-logo.svg" />
+    </div>
+    <h5 id="form-title"
+        data-publisher-text="Sign up as a publisher and start inspiring!">Sign up and start peaking!</h5>
 
-  <div class="input-wrapper" data-error-msg="Please enter a valid password">
-    <input id="signup-pass-input" name="password" type="password"
-    placeholder="Create a password" required>
-  </div>
+    <div class="notification notification--is-hidden" id="notification"></div>
 
-  <a href="#" class="button--send" id="signup-send-btn">
-    <span class="button--send__icon-wrapper ss-icon ss-pika">
-      <span class="button--send__icon-wrapper__icon"></span>
-    </span>
-    <span class="button--send__text-wrapper">
-      Sign up for free
-    </span>
-  </a>
-</form>
+    <form action="#" method="post" id="signup-form">
+        <div class="input-wrapper" data-error-msg="Please enter a valid username">
+            <input id="signup-username-input" name="username" type="text"
+                   placeholder="Create a username" required>
+        </div>
+
+        <div class="input-wrapper" data-error-msg="Please enter a valid email">
+            <input id="signup-email-input" name="email" type="email"
+                   placeholder="Your email address" required>
+        </div>
+
+        <div class="input-wrapper" data-error-msg="Please enter a valid password">
+            <input id="signup-pass-input" name="password" type="password"
+                   placeholder="Create a password" required>
+        </div>
+
+        <a href="#" class="button--send" id="signup-form__send-btn">
+            <span class="button--send__icon-wrapper ss-icon ss-pika">
+                <span class="button--send__icon-wrapper__icon"></span>
+            </span>
+            <span class="button--send__text-wrapper">
+                Sign up for free
+            </span>
+        </a>
+    </form>
+
+</div>

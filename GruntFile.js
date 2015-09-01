@@ -37,7 +37,7 @@ module.exports = function (grunt){
 
     ejs: {
       all: {
-        src: ['*.ejs'],
+        src: ['**/*.ejs', '!_inc/*.ejs'],
         cwd: '<%= devRoot %>/ejs/',
         dest: '<%= webRoot %>/',
         expand: true,
@@ -97,14 +97,14 @@ module.exports = function (grunt){
           separator: '\n\n',
         },
         js: {
-          src: ['<%= devRoot %>/js/libs/**/*.js', '<%= devRoot %>/js/src/*.js', '<%= devRoot %>/js/src/modules/*.js'],
+          src: ['<%= devRoot %>/js/libs/**/*.js', '<%= devRoot %>/js/src/*.js', '<%= devRoot %>/js/src/modules/*.js', '<%= devRoot %>/js/src/specifics/*.js'],
           dest: '<%= webRoot %>/js/app.js'
         }
     },
     uglify: {
         js: {
           files: {
-            '<%= webRoot %>/js/app.min.js': ['<%= devRoot %>/js/libs/**/*.js', '<%= devRoot %>/js/src/*.js', '<%= devRoot %>/js/src/modules/*.js']
+            '<%= webRoot %>/js/app.min.js': ['<%= devRoot %>/js/libs/**/*.js', '<%= devRoot %>/js/src/*.js', '<%= devRoot %>/js/src/modules/*.js', '<%= devRoot %>/js/src/specifics/*.js']
           }
         }
     }

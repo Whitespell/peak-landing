@@ -4,7 +4,6 @@
 
         init: function(){
             this._el = WS.utils._gebi('notification');
-
             if(!this._el) return;
 
             this._Bel = B(this._el);
