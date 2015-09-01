@@ -189,85 +189,26 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
 
 (function(WS, undefined){
 
-    WS.notification = {
-
-        init: function(){
-            this._el = WS.utils._gebi('notification');
-
-            if(!this._el) return;
-
-            this._Bel = B(this._el);
-        },
-
-        show: function(state, content){
-            var Bel = this._Bel;
-
-            this._el.innerHTML = content;
-
-            Bel.removeClass('notification--error');
-            Bel.removeClass('notification--success');
-
-            switch(state){
-                case 'error':
-                    Bel.addClass('notification--error');
-                    break;
-                case 'success':
-                    Bel.addClass('notification--success');
-                    break;
-            }
-
-            Bel.removeClass('notification--is-hidden');
-        },
-
-        hide: function(){
-            this._Bel.addClass('notification--is-hidden');
-        }
-
-    };
-
-    WS.notification.init();
-
-}(window.WS = window.WS || {}));
-
-//random bg image
-(function(WS, undefined){
-
     'use strict';
 
-    WS.randomBg = {
+    WS.httpFormHelper = function(options){
+        this._el = WS.utils._gebi(options.formId);
+        if(!this._el) return;
 
-        init: function(){
-            var options = ['skater.jpg', 'runner-clouds.jpeg', 'nomad.jpg'],
-                pickedImgUrl = options[Math.floor((Math.random()*(options.length))+0)],
-                el = document.body;
+        this._options = options;
+        this._performingState = false;
 
-            el.setAttribute('style', 'background-image: url(/img/'+pickedImgUrl+');');
+        var sendBtn = WS.utils._gebi(options.formId+'__send-btn');
+        this._BsendBtn = B(sendBtn);
+
+        this._bindEvents();
+
+        if(options.submitOnInit === true){
+            this._send();
         }
-
     };
 
-    WS.randomBg.init();
-
-}(window.WS = window.WS || {}));
-
-//signup form
-(function(WS, undefined){
-
-    'use strict';
-
-    WS.signupForm = {
-
-        init: function(){
-            this._el = WS.utils._gebi('signup-form');
-            if(!this._el) return;
-
-            this._performingState = false;
-
-            var sendBtn = WS.utils._gebi('signup-send-btn');
-            this._BsendBtn = B(sendBtn);
-
-            this._bindEvents();
-        },
+    WS.httpFormHelper.prototype = {
 
         _bindEvents: function(){
             B(this._el).on('submit', this._send.bind(this));
@@ -327,6 +268,14 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                         break;
                 }
 
+                if(curr.hasAttribute('data-match')){
+                    var el = document.getElementById(curr.getAttribute('data-match'));
+                    if(el && el.value !== curr.value){
+                        B(curr.parentNode).addClass('input-wrapper--has-error--match-error');
+                        valid = false;
+                    }
+                }
+
                 if(!valid){
                     B(curr.parentNode).addClass('input-wrapper--has-error');
                     formValid = false;
@@ -350,7 +299,10 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
         },
 
         _send: function(e){
-            e.preventDefault();
+            if(e){
+                e.preventDefault();
+            }
+            
             if(this._performingState) return false;
 
             var BsendBtn = this._BsendBtn,
@@ -370,7 +322,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
 
                 self._showState('success', true);
                 document.activeElement.blur();
-                WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
+                self._options.onSuccess(res, xhr);
             },
             onError = function(res, xhr){
                 BsendBtn.removeClass('button--send--is-mailing');
@@ -383,11 +335,121 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                 }
             };
 
+            self._options.doRequest(validation, onSuccess, onError);
+        }
+
+    };
+
+}(window.WS = window.WS || {}));
+
+
+(function(WS, undefined){
+
+    WS.notification = {
+
+        init: function(){
+            this._el = WS.utils._gebi('notification');
+            if(!this._el) return;
+
+            this._Bel = B(this._el);
+        },
+
+        show: function(state, content){
+            var Bel = this._Bel;
+
+            this._el.innerHTML = content;
+
+            Bel.removeClass('notification--error');
+            Bel.removeClass('notification--success');
+
+            switch(state){
+                case 'error':
+                    Bel.addClass('notification--error');
+                    break;
+                case 'success':
+                    Bel.addClass('notification--success');
+                    break;
+            }
+
+            Bel.removeClass('notification--is-hidden');
+        },
+
+        hide: function(){
+            this._Bel.addClass('notification--is-hidden');
+        }
+
+    };
+
+    WS.notification.init();
+
+}(window.WS = window.WS || {}));
+
+(function(WS, undefined){
+
+    'use strict';
+
+    //get token
+    var inputEl = document.getElementById('token-input');
+    if(!inputEl) return;
+    inputEl.value = WS.utils.getParameterByName('token');
+
+    inputEl = document.getElementById('username-input');
+    if(!inputEl) return;
+    inputEl.value = WS.utils.getParameterByName('username');
+
+    //
+    new WS.httpFormHelper({
+        formId: 'forgot-password-form',
+        onSuccess: function(){
+            WS.notification.show('success', 'Thank you! Your password has been changed');
+        },
+        doRequest: function(validation, onSuccess, onError){
+            console.log(validation);
+            B.ajax({
+                url: 'https://peakapi.whitespell.com/users/reset',
+                type: 'post',
+                data: {
+                    resetToken: validation.inputs.token,
+                    userName: validation.inputs.username,
+                    newPassword: validation.inputs.new_password
+                },
+                dataType: 'json',
+                success: onSuccess,
+                error: onError
+            });
+        }
+    });
+
+}(window.WS = window.WS || {}));
+
+
+(function(WS, undefined){
+
+    'use strict';
+
+    //get email
+    var inputEl = document.getElementById('signup-email-input');
+    if(!inputEl) return;
+    inputEl.value = WS.utils.getParameterByName('email');
+
+    //get email
+    var isPublisherSignup = !!WS.utils.getParameterByName('publisher');
+    if(isPublisherSignup){
+        var titleEl = document.getElementById('form-title');
+        titleEl.innerText = titleEl.getAttribute('data-publisher-text');
+    }
+
+    new WS.httpFormHelper({
+        formId: 'signup-form',
+        onSuccess: function(){
+            WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
+        },
+        doRequest: function(validation, onSuccess, onError){
             B.ajax({
                 url: 'https://peakapi.whitespell.com/users',
                 type: 'post',
                 data: {
-                    username: validation.inputs.username,
+                    userName: validation.inputs.username,
                     email: validation.inputs.email,
                     password: validation.inputs.password,
                     publisher: (WS.utils.getParameterByName('publisher') ? 1 : 0)
@@ -397,9 +459,52 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                 error: onError
             });
         }
+    });
 
-    };
+}(window.WS = window.WS || {}));
 
-    WS.signupForm.init();
+(function(WS, undefined){
+
+    'use strict';
+
+    //get token
+    var inputEl = document.getElementById('token-input');
+    if(!inputEl) return;
+    inputEl.value = WS.utils.getParameterByName('token');
+
+    inputEl = document.getElementById('username-input');
+    if(!inputEl) return;
+    inputEl.value = WS.utils.getParameterByName('username');
+
+    var formEl = WS.utils._gebi('verify-email-form'),
+        socialButtonsEl = WS.utils._gebi('social-buttons');
+
+    //
+    new WS.httpFormHelper({
+        formId: 'verify-email-form',
+        submitOnInit: true,
+        onSuccess: function(){
+            WS.notification.show('success', 'Your email has been verified!');
+        },
+        doRequest: function(validation, onSuccess, onError){
+            B.ajax({
+                url: 'https://peakapi.whitespell.com/users/email',
+                type: 'post',
+                data: {
+                    userName: validation.inputs.username,
+                    emailToken: validation.inputs.token
+                },
+                dataType: 'json',
+                success: function(res, xhr){
+                    B(socialButtonsEl).addClass('is-hidden--is-visible');
+                    onSuccess(res, xhr);
+                },
+                error: function(res, xhr){
+                    B(formEl).addClass('is-hidden--is-visible');
+                    onError(res, xhr);
+                }
+            });
+        }
+    });
 
 }(window.WS = window.WS || {}));

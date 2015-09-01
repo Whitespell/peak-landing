@@ -3,6 +3,35 @@ form {
     max-width: 300px;
     margin: 0 auto;
     display: block;
+
+    &.form--horizontal {
+        max-width: none;
+
+        .input-wrapper {
+            width: 250px;
+            
+            float: none;
+            display: inline-block;
+
+            margin: 0;
+            margin-right: $margin-m;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        input {
+            &[type="submit"]{
+                margin-right: 0;
+            }
+        }
+
+        .button--send {
+            float: none;
+            display: inline-block;
+        }
+    }
 }
 
 input, .button--send {
@@ -35,6 +64,10 @@ input, .button--send {
             color: $red;
             float: left;
         }
+
+        &.input-wrapper--has-error--match-error:before {
+            content: attr(data-match-error-msg);
+        }
     }
 }
 
@@ -52,6 +85,10 @@ input {
 
     &:focus {
         background-color: rgba($accent, .4);
+    }
+
+    &[type="submit"]:focus {
+        background-color: rgba($accent, 1);
     }
 
     &::-webkit-input-placeholder {
@@ -130,6 +167,10 @@ input {
             position: relative;
             content: 'send';
             @include transition(opacity, $duration: $transition-duration);
+        }
+
+        &__icon.button--send__icon-wrapper__icon--key:before {
+            content: 'key';
         }
     }
 

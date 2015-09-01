@@ -1,0 +1,38 @@
+<div class="feature <%= options.reversed ? 'feature--reversed' : '' %> <%= options.noBorderBottom ? 'feature--no-border-bottom' : '' %>">
+	<div class="container">
+
+		<div class="column column--half feature__content-wrapper">
+			<div class="feature__content">
+				<h2 class="feature__content__title"><%= title %></h2>
+				<h4 class="feature__content__sub-title"><%= sub_title %></h4>
+				<p class="feature__content__desc">
+					<%= desc %>
+				</p>
+				<% if(typeof testimonial === 'object'){ %>
+				<div class="feature__content__testimonial testimonial">
+					<div class="testimonial__photo">
+						<img src="/img/<%= testimonial.imgSrc %>" />
+					</div>
+					<div class="testimonial__content">
+						<blockquote>
+							<%= testimonial.quote %>
+							<cite>— <%= testimonial.cite %></cite>
+						</blockquote>
+						<div class="testimonial__content__logo <%= testimonial.logo.isVertical ? 'testimonial__content__logo--vertical' : '' %>">
+							<img src="/img/<%= testimonial.logo.src %>" />
+						</div>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</div>
+		<div class="column column--half feature__preview-wrapper">
+			<div class="feature__preview">
+				<div class="feature__preview__img-wrapper">
+					<img src="/img/<%= previewSrc %>" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

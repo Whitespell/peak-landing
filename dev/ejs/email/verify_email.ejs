@@ -1,0 +1,57 @@
+<% layout('../_inc/layout') -%>
+
+<div class="bg"></div>
+
+<div class="container container--push text-center text-white">
+
+    <div class="logo logo--big">
+        <img src="/img/peak-logo.svg" />
+    </div>
+    <h5>Verify your email</h5>
+
+    <div class="notification notification--is-hidden" id="notification"></div>
+
+    <div id="social-buttons" class="is-hidden">
+        <h5>Let your friends know you're using Peak!</h5>
+        <ul class="list list--inline">
+            <li>
+                <a href="javascript:void(window.open('https://www.facebook.com/sharer/sharer.php?u='+window.location.href,'Share Peak','width=550,height=450'));"
+                target="_blank" class="btn btn--clean text-white" title="Share Peak on Facebook">
+                    <span class="ss-icon ss-social">facebook</span>
+                    Share
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(window.open('https://twitter.com/intent/tweet?text=Train together with your favorite athletes using Peak app, by @_whitespell '+window.location.href, 'Tweet about Peak','width=550,height=450'));"
+                target="_blank" class="btn btn--clean text-white" title="Check Peak out on Twitter">
+                    <span class="ss-icon ss-social">twitter</span>
+                    Tweet
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <form action="#" method="post" id="verify-email-form" class="is-hidden">
+        <p>Looks like something went wrong. Check your details below and give it another shot.</p>
+
+        <div class="input-wrapper" data-error-msg="Enter a valid token">
+            <input id="token-input" name="token" type="text"
+                   autocomplete="off" placeholder="Safety token" required>
+        </div>
+
+        <div class="input-wrapper" data-error-msg="Enter a valid username">
+            <input id="username-input" name="username" type="text"
+                   autocomplete="off" placeholder="Username" required>
+        </div>
+
+        <a href="#" class="button--send" id="verify-email-form__send-btn">
+            <span class="button--send__icon-wrapper ss-icon ss-pika">
+                <span class="button--send__icon-wrapper__icon"></span>
+            </span>
+            <span class="button--send__text-wrapper">
+                Verify my email
+            </span>
+        </a>
+    </form>
+
+</div>

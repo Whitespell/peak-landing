@@ -9,3 +9,15 @@
 .pull-right {
     float: right;
 }
+
+.text-white {
+	color: $white !important;
+}
+
+.is-hidden {
+    display: none;
+    
+    &.is-hidden--is-visible {
+        display: block;
+    }
+}

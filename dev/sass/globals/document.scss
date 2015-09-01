@@ -15,40 +15,57 @@ body {
 	font: $main-weight $size-m $main-family;
 	color: $base-color;
 	line-height: $line-height;
+}
 
-	//background-image: url(/img/skater.jpg);
+.container {
+	width: $xl-container-width;
+	margin: 0 auto;
+	overflow: hidden;
+
+	&.container--push {
+		padding-top: 4em;
+	}
+}
+
+.section {
+	width: 100%;
+	padding: $margin-xxl 0;
+	color: $white;
+	text-align: center;
+
+	&.section--dark {
+		background-color: $dark;
+	}
+}
+
+.bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+
+	background-image: url(/img/runner-clouds.jpeg);
 	background-color: $dark;
 	background-repeat: no-repeat;
 	background-position: center center;
+
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 
-	&:before {
+	&:after {
 		content: '';
-
+		
 		position: fixed;
 		top: 0;
-		bottom: 0;
-		left: 0;
 		right: 0;
-
-		display: block;
+		left: 0;
+		bottom: 0;
 
 		background-color: $dark;
 		opacity: .8;
-
-		z-index: -1;
 	}
-}
-
-.container {
-	width: $md-container-width;
-	margin: 0 auto;
-	overflow: hidden;
-}
-
-.content-wrapper {
-	margin-top: 3em;
 }
