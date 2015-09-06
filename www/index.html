@@ -62,7 +62,7 @@
   <body>
 
     
-<div class="hero">
+<div class="hero" id="js-hero">
 	<div class="container">
 		<header class="masthead">
     <div class="container">
@@ -104,6 +104,10 @@
 	</div>
 	<div class="ss-icon ss-pika hero__pointer">navigatedown</div>
 </div>
+
+<script>
+document.getElementById('js-hero').setAttribute('class', 'hero hero--alt-bg-'+(Math.floor((Math.random() * 2) + 1)));
+</script>
 
 <div class="feature  ">
 	<div class="container">

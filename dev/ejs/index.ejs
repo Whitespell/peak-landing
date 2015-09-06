@@ -1,6 +1,6 @@
 <% layout('_inc/layout') -%>
 
-<div class="hero">
+<div class="hero" id="js-hero">
 	<div class="container">
 		<%- include _inc/masthead %>
 		<div class="hero__content">
@@ -13,6 +13,10 @@
 	</div>
 	<div class="ss-icon ss-pika hero__pointer">navigatedown</div>
 </div>
+
+<script>
+document.getElementById('js-hero').setAttribute('class', 'hero hero--alt-bg-'+(Math.floor((Math.random() * 2) + 1)));
+</script>
 
 <%- partial('_inc/feature', {
 		title: 'Tell us what sports you like',

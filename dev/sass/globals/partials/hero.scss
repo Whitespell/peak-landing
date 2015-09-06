@@ -16,6 +16,10 @@
 	-o-background-size: cover;
 	background-size: cover;
 
+	&.hero--alt-bg-1 {
+		background-image: url(/img/advanced-yoga-woman-1600.jpg);
+	}
+
 	&__content {
 		font-size: $size-l;
 
@@ -76,9 +80,17 @@
 
 	@include media(1600px, 1920px){
 		background-image: url(/img/advanced-yoga-male-1920x900.jpg);
+
+		&.hero--alt-bg-1 {
+			background-image: url(/img/advanced-yoga-woman-1920x900.jpg);
+		}
 	}
 
 	@include media(1920px){
 		background-image: url(/img/advanced-yoga-male-2500x900.jpg);
+
+		&.hero--alt-bg-1 {
+			background-image: url(/img/advanced-yoga-woman-2500x900.jpg);
+		}
 	}
 }
