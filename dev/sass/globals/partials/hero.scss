@@ -6,7 +6,7 @@
 	text-align: center;
 	color: $white;
 
-	background-image: url(/img/runner-clouds.jpeg);
+	background-image: url(/img/advanced-yoga-male-1600.jpg);
 	background-color: $dark;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -64,5 +64,21 @@
 		opacity: .4;
 
 		z-index: 0;
+	}
+
+	@include media(1600px){
+		height: 900px;
+
+		&__content__title {
+			padding-top: 6em;
+		}
+	}
+
+	@include media(1600px, 1920px){
+		background-image: url(/img/advanced-yoga-male-1920x900.jpg);
+	}
+
+	@include media(1920px){
+		background-image: url(/img/advanced-yoga-male-2500x900.jpg);
 	}
 }
