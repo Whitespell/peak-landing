@@ -120,7 +120,13 @@
 	.masthead {
 		nav {
 			float: left;
+			text-align: left;
 			padding-top: $margin-s;
+
+			a.btn {
+				display: inline-block;
+				margin-top: $margin-xs;
+			}
 		}
 	}
 

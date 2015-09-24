@@ -6,7 +6,7 @@
 	text-align: center;
 	color: $white;
 
-	background-image: url(/img/runner-clouds.jpeg);
+	background-image: url(/img/advanced-yoga-male-1600.jpg);
 	background-color: $dark;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -15,6 +15,10 @@
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+
+	&.hero--alt-bg-1 {
+		background-image: url(/img/advanced-yoga-woman-1600.jpg);
+	}
 
 	&__content {
 		font-size: $size-l;
@@ -64,5 +68,37 @@
 		opacity: .4;
 
 		z-index: 0;
+	}
+
+	@include media(1600px){
+		height: 900px;
+
+		&__content__title {
+			padding-top: 6em;
+		}
+	}
+
+	@include media($max-width: 800px){
+		background-image: url(/img/advanced-yoga-male-400x550.jpg);
+
+		&.hero--alt-bg-1 {
+			background-image: url(/img/advanced-yoga-woman-1600.jpg);
+		}
+	}
+
+	@include media(1600px, 1920px){
+		background-image: url(/img/advanced-yoga-male-1920x900.jpg);
+
+		&.hero--alt-bg-1 {
+			background-image: url(/img/advanced-yoga-woman-1920x900.jpg);
+		}
+	}
+
+	@include media(1920px){
+		background-image: url(/img/advanced-yoga-male-2500x900.jpg);
+
+		&.hero--alt-bg-1 {
+			background-image: url(/img/advanced-yoga-woman-2500x900.jpg);
+		}
 	}
 }
