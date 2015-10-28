@@ -17,7 +17,7 @@
     new WS.httpFormHelper({
         formId: 'signup-form',
         onSuccess: function(){
-            WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
+            WS.notification.show('success', 'Thank you! We\'ll get in touch as soon as we release!');
         },
         doRequest: function(validation, onSuccess, onError){
             B.ajax({
