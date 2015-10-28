@@ -1,10 +1,10 @@
 .logo {
-    max-width: 100px;
+    width: 100px;
     margin-bottom: $margin-m;
     display: inline-block;
 	line-height: 0;
 
     &.logo--big {
-        max-width: 120px;
+        width: 120px;
     }
 }
