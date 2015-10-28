@@ -1,6 +1,8 @@
 #!/bin/sh
+DEPLOY_PATH="/var/www/upfit.co"
+
 echo "Starting deployment";
-ssh website-internal.whitespell.com "sudo mkdir -p /var/www/peakapp.me && sudo chmod -R 777 /var/www/peakapp.me";
-rsync -av www/ website-internal.whitespell.com:/var/www/peakapp.me;
-ssh website-internal.whitespell.com "sudo chmod -R 755 /var/www/peakapp.me";
+ssh website-internal.whitespell.com "sudo mkdir -p $DEPLOY_PATH && sudo chmod -R 777 $DEPLOY_PATH";
+rsync -av www/ website-internal.whitespell.com:$DEPLOY_PATH;
+ssh website-internal.whitespell.com "sudo chmod -R 755 $DEPLOY_PATH";
 echo "Deployment Successful";
