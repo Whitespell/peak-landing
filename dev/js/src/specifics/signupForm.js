@@ -8,7 +8,7 @@
     inputEl.value = WS.utils.getParameterByName('email');
 
     //get email
-    var isPublisherSignup = !!WS.utils.getParameterByName('publisher');
+    var isPublisherSignup = false;//!!WS.utils.getParameterByName('publisher'); publisher signup is currently disabled
     if(isPublisherSignup){
         var titleEl = document.getElementById('form-title');
         titleEl.innerText = titleEl.getAttribute('data-publisher-text');
