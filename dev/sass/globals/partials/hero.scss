@@ -20,6 +20,10 @@
 		background-image: url(/img/advanced-yoga-woman-1600.jpg);
 	}
 
+	&.hero--publisher-bg {
+		background-image: url(/img/yoga-woman-1600.jpg);
+	}
+
 	&__content {
 		font-size: $size-l;
 
@@ -84,6 +88,10 @@
 		&.hero--alt-bg-1 {
 			background-image: url(/img/advanced-yoga-woman-1600.jpg);
 		}
+
+		&.hero--publisher-bg {
+			background-image: url(/img/yoga-woman-1600.jpg);
+		}
 	}
 
 	@include media(1600px, 1920px){
@@ -92,6 +100,10 @@
 		&.hero--alt-bg-1 {
 			background-image: url(/img/advanced-yoga-woman-1920x900.jpg);
 		}
+
+		&.hero--publisher-bg {
+			background-image: url(/img/yoga-woman-1920x900.jpg);
+		}
 	}
 
 	@include media(1920px){
@@ -99,6 +111,10 @@
 
 		&.hero--alt-bg-1 {
 			background-image: url(/img/advanced-yoga-woman-2500x900.jpg);
+		}
+
+		&.hero--publisher-bg {
+			background-image: url(/img/yoga-woman-2500x900.jpg);
 		}
 	}
 }
