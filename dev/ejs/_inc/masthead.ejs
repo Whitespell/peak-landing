@@ -20,8 +20,11 @@
                     </a>
                 </li>
                 <li>
-                    <a class="btn" href="/publisher" title="Upfit for publishers">
-                        Upfit for publishers
+                    <a class="btn" 
+                       href="<%= blocks.storage.mastheadCtaHref %>"
+                       title="<%= blocks.storage.mastheadCtaText %>">
+                        <% console.log(blocks.storage); %>
+                        <%= blocks.storage.mastheadCtaText %>
                     </a>
                 </li>
             </ul>
