@@ -33,6 +33,27 @@ body {
 	color: $white;
 	text-align: center;
 
+	&.section--text {
+		color: $base-color;
+		text-align: left;
+
+		ul,ol {
+			padding-left: $margin-l;
+
+			li {
+				margin-bottom: $margin-s;
+			}
+		}
+
+		ul,ol,p {
+			margin-bottom: $margin-m;
+		}
+
+		.container {
+			max-width: 600px;
+		}
+	}
+
 	&.section--dark {
 		background-color: $dark;
 	}

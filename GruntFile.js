@@ -11,7 +11,7 @@ module.exports = function (grunt){
             options: {
                 livereload: true,
                 hostname: '0.0.0.0',
-                port: 9000,
+                port: 8000,
                 base: '<%= webRoot %>/'
             }
         }

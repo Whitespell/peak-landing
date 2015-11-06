@@ -5,9 +5,15 @@
     font-size: $size-s;
     text-align: center;
 
+    line-height: 1em;
+
     a {
-        color: $grey-light;
+        color: $grey;
         text-decoration: none;
+    }
+
+    p {
+        margin: 0;
     }
 
     &__logo {
