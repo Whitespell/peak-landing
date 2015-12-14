@@ -17,7 +17,7 @@
     new WS.httpFormHelper({
         formId: 'signup-form',
         onSuccess: function(){
-            WS.notification.show('success', 'Thank you! We\'ll get in touch as soon as we release!');
+            WS.notification.show('success', 'Thank you! <a href="http://app.upfit.co">Get started right away!</a>');
         },
         doRequest: function(validation, onSuccess, onError){
             B.ajax({

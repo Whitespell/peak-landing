@@ -336,6 +336,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
             };
 
             self._options.doRequest(validation, onSuccess, onError);
+
         }
 
     };
@@ -433,7 +434,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
     inputEl.value = WS.utils.getParameterByName('email');
 
     //get email
-    var isPublisherSignup = !!WS.utils.getParameterByName('publisher');
+    var isPublisherSignup = false;//!!WS.utils.getParameterByName('publisher'); publisher signup is currently disabled
     if(isPublisherSignup){
         var titleEl = document.getElementById('form-title');
         titleEl.innerText = titleEl.getAttribute('data-publisher-text');
@@ -442,7 +443,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
     new WS.httpFormHelper({
         formId: 'signup-form',
         onSuccess: function(){
-            WS.notification.show('success', 'Thank you! We\'ll get in touch shortly');
+            WS.notification.show('success', 'Thank you! <a href="http://app.upfit.co">Get started right away!</a>');
         },
         doRequest: function(validation, onSuccess, onError){
             B.ajax({
