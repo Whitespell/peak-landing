@@ -443,7 +443,8 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
     new WS.httpFormHelper({
         formId: 'signup-form',
         onSuccess: function(){
-            WS.notification.show('success', 'Thank you! <a href="http://app.upfit.co">Get started right away!</a>');
+            WS.notification.show('success', 'Thank you! We\'ll be in touch shortly.');
+            location.href = 'https://app.upfit.co';
         },
         doRequest: function(validation, onSuccess, onError){
             B.ajax({
