@@ -27,7 +27,7 @@
                     userName: validation.inputs.username,
                     email: validation.inputs.email,
                     password: validation.inputs.password,
-                    publisher: (WS.utils.getParameterByName('publisher') ? 1 : 0)
+                    publisher: 0//(WS.utils.getParameterByName('publisher') ? 1 : 0)
                 },
                 dataType: 'json',
                 success: onSuccess,

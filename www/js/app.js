@@ -453,7 +453,7 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
                     userName: validation.inputs.username,
                     email: validation.inputs.email,
                     password: validation.inputs.password,
-                    publisher: (WS.utils.getParameterByName('publisher') ? 1 : 0)
+                    publisher: 0//(WS.utils.getParameterByName('publisher') ? 1 : 0)
                 },
                 dataType: 'json',
                 success: onSuccess,
