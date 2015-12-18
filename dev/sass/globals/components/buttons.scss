@@ -73,15 +73,6 @@
         line-height: 0;
     }
 
-    &.btn--download--web {
-        background-color: rgba($accent, .9);
-        border-color: $accent;
-
-        &:before {
-            content: "\e611";
-        }
-    }
-
     &.btn--download--apple {
         background-color: rgba($accent, .9);
         border-color: $accent;
