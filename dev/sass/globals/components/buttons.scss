@@ -27,6 +27,10 @@
     }
 }
 
+.btn.btn--lg {
+    font-size: $size-l !important;
+}
+
 .btn.btn--cta {
     font-size: $size-m;
     padding: $margin-s $margin-l;
@@ -49,16 +53,24 @@
 
 .btn.btn--download {
 
-    padding: 1em 1.5em; 
+    padding: .7em 1.3em;
+    text-align: left;
+
+    div {
+        display: inline-block;
+        overflow: hidden;
+        line-height: 1.1em;
+    }
 
     &:before {
-        font-size: 1.1em;
+        font-size: 2em;
         font-family: 'devicons';
         
         position: relative;
-        top: 2px;
+        top: -3px;
 
         margin-right: .3em;
+        line-height: 0;
     }
 
     &.btn--download--apple {
