@@ -138,3 +138,13 @@ body {
 		height: 100%;
 	}
 }
+
+.promo-banner {
+	text-align: center;
+	background-color: rgba($grey, .25);
+	padding: $margin-m 0;
+
+	.btn {
+		margin-left: $margin-m;
+	}
+}
