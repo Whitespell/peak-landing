@@ -131,10 +131,19 @@
 	}
 
 	.hero {
-		height: 550px;
+		height: 720px; //550px;
 
 		&__content__title {
-			padding-top: 1em;
+			padding-top: .5em;
+			line-height: 1.2em;
+		}
+
+		video {
+			display: none;
+		}
+
+		.btn.btn--download {
+			margin-bottom: $margin-s;
 		}
 	}
 
