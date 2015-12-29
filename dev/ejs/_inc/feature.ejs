@@ -18,9 +18,11 @@
 							<%= testimonial.quote %>
 							<cite>— <%= testimonial.cite %></cite>
 						</blockquote>
+						<% if(testimonial.logo){ %>
 						<div class="testimonial__content__logo <%= testimonial.logo.isVertical ? 'testimonial__content__logo--vertical' : '' %>">
 							<img src="/img/<%= testimonial.logo.src %>" />
 						</div>
+						<% } %>
 					</div>
 				</div>
 				<% } %>
