@@ -66,6 +66,12 @@
 
 
 <div class="hero hero hero--alt-bg-1" id="js-hero">
+
+	<video autoplay loop muted poster="img/advanced-yoga-woman-1600.jpg">
+    	<source src="upfit-promo/upfit-promo-1080p.webm" type="video/webm">
+    	<source src="upfit-promo/upfit-promo-1080p.mp4" type="video/mp4">
+	</video>
+
 	<div class="container">
 		<header class="masthead">
     <div class="container">
@@ -105,6 +111,7 @@
 				Your favorite trainers, on demand
 			</h1>
 			<p class="hero__content__sub-title">Train like a pro with the Upfit App</p>
+			<div>
 			<a class="btn btn--cta btn--download btn--download--apple hero__content__cta"
 			   href="http://apple.co/1QNUVFB">
 			   	<div>
@@ -119,14 +126,18 @@
 				Google Play
 				</div>
 			</a>
+			</div>
+			<a class="hero__play-btn" id="js-dialog-open"></a>
 		</div>
 	</div>
 	<div class="ss-icon ss-pika hero__pointer">navigatedown</div>
 </div>
 
-<!--<script>
-//document.getElementById('js-hero').setAttribute('class', 'hero hero--alt-bg-'+(Math.floor((Math.random() * 2) + 1)));
-</script>-->
+<div class="dialog" id="js-dialog">
+	<div class="dialog__close" id="js-dialog-close">
+		<span class="ss-icon ss-pika">delete</span>
+	</div>
+</div>
 
 <div class="feature  ">
 	<div class="container">

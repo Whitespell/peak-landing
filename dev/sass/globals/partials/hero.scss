@@ -3,6 +3,8 @@
 	height: 750px;
 	position: relative;
 
+	overflow: hidden;
+
 	text-align: center;
 	color: $white;
 
@@ -15,6 +17,32 @@
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+
+	video {
+		width: 100%;
+		min-height: 100%;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+
+		background-color: #000;
+	}
+
+	&__play-btn {
+		width: 60px;
+		height: 60px;
+		
+		display: inline-block;
+		margin-top: $margin-l;
+
+		background-image: url(/img/play-btn.png);
+		background-size: cover;
+
+		cursor: pointer;
+	}
 
 	&.hero--alt-bg-1 {
 		background-image: url(/img/advanced-yoga-woman-1600.jpg);
@@ -54,7 +82,7 @@
 
 	.container {
 		position: relative;
-		z-index: 1;
+		z-index: 2;
 	}
 
 	&:before {
@@ -71,7 +99,7 @@
 		background-color: $dark;
 		opacity: .4;
 
-		z-index: 0;
+		z-index: 1;
 	}
 
 	@include media(1600px){
