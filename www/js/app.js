@@ -211,8 +211,16 @@ if (/(MSIE [7-9]\.|Opera.*Version\/(10\.[5-9]|(11|12)\.)|Chrome\/([1-9]|10)\.|Ve
     WS.httpFormHelper.prototype = {
 
         _bindEvents: function(){
+            var self = this;
+
             B(this._el).on('submit', this._send.bind(this));
             this._BsendBtn.click(this._send.bind(this));
+            
+            B(this._el).on('keyup', function(e){
+                if(e.keyCode === 13){
+                    self._send.call(self);
+                }
+            });
         },
 
         _showState: function(stateName, freezeOnState){
