@@ -42,6 +42,13 @@
 		background-size: cover;
 
 		cursor: pointer;
+		opacity: .8;
+
+		@include transition(opacity);
+
+		&:hover {
+			opacity: 1;
+		}
 	}
 
 	&.hero--alt-bg-1 {

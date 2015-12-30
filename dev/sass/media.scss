@@ -147,6 +147,16 @@
 		}
 	}
 
+	.promo-banner {
+		span {
+			display: block;
+			margin-bottom: $margin-s;
+		}
+		.btn {
+			margin-left: 0;
+		}
+	}
+
 	.feature {
 		padding-top: $margin-l;
 
